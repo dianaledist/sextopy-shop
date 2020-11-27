@@ -1,24 +1,14 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>¡Hello bitches!</h1>
+      <p>Si estás buscando ropa sexy y cómoda, para decorar tu interior o tu cuerpx exterior, estás en el lugar adecuado</p>
+      <p>Sextopy shop, otra forma de disfrutarte</p>
+    </>
+    
   );
 }
 
