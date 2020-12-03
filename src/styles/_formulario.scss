@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bellota+Text:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+.form_body {
+  background: url("../assets/images/lenceria.jpg") center fixed;
+  background-size: cover;
+}
+
+.formulario {
+  background-color: #b41039c5;
+  border-radius: 10px;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #ec9484 !important;
+}
+
+.btn-primary:focus {
+  border-color: rgba(14, 26, 12, 0.8) !important;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(14, 26, 12, 0.8) !important;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(14, 26, 12, 0.8) !important;
+  outline: 0 none !important;
+}
+
+.input-form:focus {
+  border-color: rgba(14, 26, 12, 0.8) !important;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(14, 26, 12, 0.8) !important;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(14, 26, 12, 0.8) !important;
+  outline: 0 none !important;
+}
+
+@media only screen and (max-width: 576px) {
+  .form_body {
+    padding-top:30%;
+  }
+  .formulario h1 {
+    font-size: 10vw !important;
+  }
+  .formulario h2 {
+    font-size: 5vw !important;
+  }
+}
+
+.Shrikhand {
+  font-family: "Shrikhand";
+}
+
+.Bellota-text {
+  font-family: "Bellota Text";
+}
+
+.Bellota-text-bold {
+  font-weight: bold;
+}

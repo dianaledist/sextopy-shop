@@ -1,13 +1,26 @@
+import './styles/main.scss';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Fragment, useState } from 'react';
+import Header from './components/Header';
+import Formulario from './components/Formulario';
 
-import './App.css';
+
 
 function App() {
+    const [nombre, guardarNombre]= useState('');
+    const [email, guardarEmail]= useState('');
+    
   return (
-    <>
-      <h1>¡Hello bitches!</h1>
-      <p>Si estás buscando ropa sexy y cómoda, para decorar tu interior o tu cuerpx exterior, estás en el lugar adecuado</p>
-      <p>Sextopy shop, otra forma de disfrutarte</p>
-    </>
+    <Fragment>
+      <Header/>
+      <Formulario 
+      nombre={nombre}
+      guardarNombre={guardarNombre}
+      email={email}
+      guardarEmail={guardarEmail}
+      />
+
+    </Fragment>
     
   );
 }
