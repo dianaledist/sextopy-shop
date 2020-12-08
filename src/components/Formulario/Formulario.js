@@ -31,7 +31,7 @@ const Formulario = ({nombre, email}) => {
 
     return ( 
         <div className="form_body container-fluid vh-100 d-flex justify-content-center align-items-center">
-            <div className="w-75 formulario no-gutters d-flex p-5 row animate__animated animate__backInDown">
+            <div className="w-75 formulario no-gutters d-flex p-5 row animate__animated animate__backInUp">
                 <div className="col-12">
                     <h1 className="Shrikhand text-center ">¿Querés consultar algo?</h1>
                 </div>
