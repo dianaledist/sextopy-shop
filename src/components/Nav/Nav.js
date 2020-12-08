@@ -1,18 +1,24 @@
 import React, { Fragment } from 'react';
-import '../styles/_header.scss';
-import logo from '../assets/images/sextopy_logo.svg';
+import './nav.scss';
+import logo from '../../assets/images/sextopy_logo.svg';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-/* import PersonIcon from '@material-ui/icons/Person'; */
+import NavShopItem from '../NavShopItem/NavShopItem';
+/* import MenuNav from './MenuNav'; */
+/* import {PersistentDrawerLeft} from '../Drawer/Drawer';
+ */
 
-const Header = () => {
+const Nav = () => {
 
     function openModal() {
-        console.log('abriendo modal');
+        console.log("abriendo modal")
+        
     }
 
     function openMenu(){
-        console.log('abriendo menu lateral');
+        
+        console.log("abriendo menu izquierdo")
+        
     }
 
     return (
@@ -20,8 +26,11 @@ const Header = () => {
         <header className="container-fluid">
             <section className="navbar-section d-flex justify-content-between">
                 <div className="navbar-menulogo d-flex align-items-center">
-                    <MenuIcon fontSize="large" className="menu_icon icons" onClick={ () => openMenu()}/>        
-                  
+                    <a href="#menu">
+                        <MenuIcon fontSize="large"  className="menu_icon icons icon open" onClick={ () => openMenu()}/>      
+                    </a>  
+
+      
                     <a href="#index" className="icons">
                         <div className="d-flex justify-content-center">
                         <img src={logo}  width="80%" alt="logo sextopy"/>
@@ -34,10 +43,7 @@ const Header = () => {
                         <a href="#index" className="icons">
                             <ExitToAppIcon fontSize="large" className="icons d-none d-md-block mr-2" onClick={ () => openModal()}/>
                         </a>
-                        <a href="#index" className="icons shop_image">
-                            
-                            <span className="shop_cantidad d-flex justify-content-center pt-2">0</span>
-                        </a>                     
+                        <NavShopItem/>           
                     </div>
                 </div>
             </section>
@@ -49,4 +55,4 @@ const Header = () => {
     );
 }
  
-export default Header;
+export default Nav;
