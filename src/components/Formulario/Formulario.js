@@ -1,6 +1,6 @@
 import React  from 'react';
-import '../styles/_formulario.scss';
-import mouthImage from '../assets/images/erotic-mouth.png';
+import './formulario.scss';
+import mouthImage from '../../assets/images/erotic-mouth.png';
 import Swal from 'sweetalert2';
 
 const Formulario = ({nombre, email}) => {
@@ -33,7 +33,7 @@ const Formulario = ({nombre, email}) => {
         <div className="form_body container-fluid vh-100 d-flex justify-content-center align-items-center">
             <div className="w-75 formulario no-gutters d-flex p-5 row animate__animated animate__backInDown">
                 <div className="col-12">
-                    <h1 className="Shrikhand text-center ">Erotismo pa' tu body</h1>
+                    <h1 className="Shrikhand text-center ">¿Querés consultar algo?</h1>
                 </div>
                 <div className="col-12 col-sm-6 text-center">                 
                     <div className="d-flex justify-content-center align-items-center h-100">

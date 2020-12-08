@@ -1,13 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bellota+Text:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+@import "../../styles/main.scss";
 
 .form_body {
-  background: url("../assets/images/lenceria.jpg") center fixed;
+  background: url("../../assets/images/lenceria.jpg") center fixed;
   background-size: cover;
 }
 
 .formulario {
-  background-color: #b41039c5;
+ /*  background-color: #b41039c5; */
+  background-color: $color-primary;
   border-radius: 10px;
   color: white;
 }
@@ -34,6 +35,7 @@
   .form_body {
     padding-top:30%;
   }
+
   .formulario h1 {
     font-size: 10vw !important;
   }
@@ -42,14 +44,3 @@
   }
 }
 
-.Shrikhand {
-  font-family: "Shrikhand";
-}
-
-.Bellota-text {
-  font-family: "Bellota Text";
-}
-
-.Bellota-text-bold {
-  font-weight: bold;
-}
