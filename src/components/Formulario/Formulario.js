@@ -49,7 +49,7 @@ const Formulario = ({nombre, email}) => {
                         <input type="email" className="form-control input-form Bellota-text" placeholder="Tu mejor email..." id="email-form" />
                         <label className="Bellota-text-bold">Comentarios</label>  
                         <textarea name="" id="" className="form-control input-form Bellota-text" placeholder="Contanos como podríamos satisfacer tus deseos..."></textarea> 
-                        <input type="submit" className="btn btn-primary mt-3 form-control border-0 Bellota-text" value="Enviar"/>   
+                        <input type="submit" className="btn btn-rosa mt-3 form-control border-0 Bellota-text" value="Enviar"/>   
                                         
                     </form>
                 </div>

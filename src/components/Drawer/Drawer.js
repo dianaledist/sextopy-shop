@@ -7,6 +7,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import './Drawer.scss';
+
 import logo from '../../assets/images/sextopy_logo.svg';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -76,7 +78,7 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawerRight(anchor, false)}
       onKeyDown={toggleDrawerRight(anchor, false)}
     >
-      <List>
+      <List >
         {['Tu cesta del placer está vacía'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemText primary={text} />

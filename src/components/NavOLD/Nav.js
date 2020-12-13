@@ -11,19 +11,19 @@ import NavShopItem from '../NavShopItem/NavShopItem';
 const Nav = () => {
 
     function openModal() {
-        console.log("abriendo modal")
+        console.log("abriendo modal");
         
     }
 
     function openMenu(){
         
-        console.log("abriendo menu izquierdo")
+        console.log("abriendo menu izquierdo");
         
     }
 
     return (
     <Fragment>
-        <header className="container-fluid">
+        <header className="container-fluid header-nav">
             <section className="navbar-section d-flex justify-content-between">
                 <div className="navbar-menulogo d-flex align-items-center">
                     <a href="#menu">
