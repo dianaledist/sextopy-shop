@@ -12,6 +12,7 @@ const Home = () => {
 
     const [productos, setProductos] =useState([productosDB]);
 
+
 /*     console.log(JSON.stringify(productos)); */
 
     return ( 
