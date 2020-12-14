@@ -4,35 +4,41 @@ import { Fragment, useState } from 'react';
 import Formulario from './components/Formulario/Formulario';
 /* import SectionCards from './components/SectionCards/SectionCards'; */
 import HomeCarrousel from './components/HomeCarrousel/HomeCarrousel';
-import Drawer from './components/Drawer/Drawer';
+import Nav from './components/Nav/Nav';
 import Home from './components/Home/Home';
-
-/* import {productos} from './database/db'; */
-
-/* import productxmas1 from "./assets/images/productxmas1.jpg";
-import productxmas2 from "./assets/images/productxmas2.jpg";
-import productxmas3 from "./assets/images/productxmas3.jpg";
- */
+import Footer from './components/Footer/Footer';
 
 function App() {
     const [nombre, guardarNombre]= useState('');
     const [email, guardarEmail]= useState('');
 
+    //State para un carrito de compras
     const [carritoCompra, setCarritoCompra] = useState ([]);
+    const fecha= new Date().getFullYear();
     
+
   return (
     <Fragment>
-      <Drawer
+      <Nav
+      carritoCompra={carritoCompra}
+      setCarritoCompra={setCarritoCompra}
       />
     
       <HomeCarrousel/>
-      <Home/>
+      <Home
+      carritoCompra={carritoCompra}
+      setCarritoCompra={setCarritoCompra}
+      />
 
       <Formulario 
       nombre={nombre}
       guardarNombre={guardarNombre}
       email={email}
       guardarEmail={guardarEmail}
+      />
+      <Footer
+            fecha={fecha}
+            titulo='Made with 🖤 by Diana Leonor Di Stefano @ disatechgo &copy;'
       />
 
     </Fragment>

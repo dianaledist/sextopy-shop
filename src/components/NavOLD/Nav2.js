@@ -7,7 +7,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import './Drawer.scss';
+import './nav.scss';
 
 import logo from '../../assets/images/sextopy_logo.svg';
 import MenuIcon from '@material-ui/icons/Menu';

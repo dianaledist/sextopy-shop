@@ -1,19 +1,15 @@
 import React from 'react';
 import SectionCards from '../SectionCards/SectionCards';
 
-/* import productxmas1 from "../../assets/images/productxmas1.jpg";
-import productxmas2 from "../../assets/images/productxmas2.jpg";
-import productxmas3 from "../../assets/images/productxmas3.jpg"; */
 import { Fragment, useState } from 'react';
 import productosDB from "../../database/db";
 
 
-const Home = () => {
+const Home = ({carritoCompra, setCarritoCompra}) => {
 
     const [productos, setProductos] =useState([productosDB]);
 
-
-/*     console.log(JSON.stringify(productos)); */
+ /*     console.log(JSON.stringify(productos)); */
 
     return ( 
         <Fragment>
@@ -26,6 +22,8 @@ const Home = () => {
                     productos={productos}
                     key={producto.id}
                     producto={producto} 
+                    carritoCompra={carritoCompra}
+                    setCarritoCompra={setCarritoCompra}
                     />        
                   ))}
             </div>

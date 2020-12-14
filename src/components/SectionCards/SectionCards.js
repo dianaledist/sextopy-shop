@@ -3,11 +3,15 @@ import './SectionCards.scss';
 import Contador from '../utils/Contador';
 
 
-const SectionCards = ({producto}) => {
+const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra}) => {
 
-    const {url, nombre, descripcion, precio, stock} = producto;
+    const {id, url, nombre, descripcion, precio, stock} = producto;
 
     const [contador, setContador]= useState(1);
+
+    function agregarCarrito() {
+        console.log("agregando....");
+    }
 
     return (
 
@@ -24,8 +28,9 @@ const SectionCards = ({producto}) => {
                     contador={contador}
                     setContador={setContador}
                     stock={stock}
+                    id={id}
                     />
-                    <a href="#index" className="btn color-primario text-white btn-lg text-uppercase mt-3">Agregar al Carrito</a>
+                    <a href="#index" className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => agregarCarrito(id)}>Agregar al Carrito</a>
                 </div>
             </div>
             </div>  
