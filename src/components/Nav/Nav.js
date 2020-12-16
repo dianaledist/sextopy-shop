@@ -11,10 +11,10 @@ import DrawerRight from '../DrawerRight/DrawerRight';
 const Nav = () => {
     return (
         <Fragment>
-        <header className="container-fluid">
-        <section className="navbar-section d-flex justify-content-between">
+        <header className="container-fluid Bellota-text">
+        <section className="navbar-section d-flex justify-content-between ">
         <div className="navbar-menulogo d-flex align-items-center color-primario-solid">
-            <DrawerLeft/>
+            <DrawerLeft />
                 <a href="#index" className="icons ml-3 p-1">
                     <div className="d-flex">
                     <img src={logo}  width="60%" alt="logo sextopy"/>
