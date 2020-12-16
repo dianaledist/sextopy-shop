@@ -16,9 +16,11 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra}) =>
     return (
 
         <Fragment>
+            
            <div className="col-12 col-lg-4 mb-4">
-               
-            <div className="card-producto text-center">
+                 
+            <div className="card-producto text-center animate__animated animate__zoomIn">
+              
                 <img src={url} alt={nombre} className="img-fluid pt-3"/>
                 <div className="info-producto text-center p-4 Bellota-text">
                     <h3 className="text-center mb-3 Bellota-text-bold">{nombre}</h3>
@@ -34,7 +36,7 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra}) =>
                 </div>
             </div>
             </div>  
-            
+   
         </Fragment>
       );
 }

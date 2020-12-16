@@ -45,11 +45,12 @@ export default function TemporaryDrawer() {
       role="presentation"
       onClick={toggleDrawerLeft(anchor, false)}
       onKeyDown={toggleDrawerLeft(anchor, false)}
+      
     >
-      <List>
+      <List >
         {['Ropa íntima', 'Accesorios', 'Juguetes eróticos', 'Novedades'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemText primary={text} />
+            <ListItemText primary={text} className="Bellota-text" />
           </ListItem>
         ))}
       </List>

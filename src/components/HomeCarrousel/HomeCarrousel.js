@@ -7,7 +7,7 @@ import imagen3 from "../../assets/images/carousel3.jpg";
 const HomeCarrousel = () => {
     return (
 
-    <Carousel>
+    <Carousel className="Bellota-text">
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -15,7 +15,7 @@ const HomeCarrousel = () => {
             alt="Imagen de lencería erótica"
           />
           <Carousel.Caption>
-            <h3>Novedades exclusivas para sextopers</h3>
+            <h3 className="Bellota-text-bold">Novedades exclusivas para sextopers</h3>
             <p>Lo último en ropa para sentirte bien con vos y las demás personas</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -27,7 +27,7 @@ const HomeCarrousel = () => {
           />
       
           <Carousel.Caption>
-            <h3>Un beso dice mas que mil palabras</h3>
+            <h3 className="Bellota-text-bold">Un beso dice mas que mil palabras</h3>
             <p>Si querés saber los trucos para el placer, entra a leer la nota.</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -39,7 +39,7 @@ const HomeCarrousel = () => {
           />
       
           <Carousel.Caption>
-            <h3>Mi cuerpo, mi espacio</h3>
+            <h3 className="Bellota-text-bold">Mi cuerpo, mi espacio</h3>
             <p>Cómo preparar un entorno agradable para explorar los sentidos.</p>
           </Carousel.Caption>
         </Carousel.Item>
