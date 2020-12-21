@@ -1,0 +1,28 @@
+
+header {
+    background-color:  #b41039 !important;
+    position:fixed;
+    z-index: 999;
+    -webkit-box-shadow: 0px 12px 20px -7px rgba(0,0,0,0.27);
+    -moz-box-shadow: 0px 12px 20px -7px rgba(0,0,0,0.27);
+    box-shadow: 0px 12px 20px -7px rgba(0,0,0,0.27);
+    opacity: .95;
+
+
+}
+
+.icons {
+    color: white !important;
+}
+
+.shop_image {
+    background: url('../../../assets/images/shop_lux.svg') center no-repeat;
+    min-width:  30px;
+    min-height: 30px;
+}
+
+.shop_cantidad {
+    font-size: 0.8rem;
+    color: #b41039;
+    font-weight: bold;
+}

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import './SectionCards.scss';
-import Contador from '../utils/Contador';
+import Contador from '../../utils/Contador';
 
 
 const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra}) => {
@@ -25,7 +25,7 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra}) =>
                 <div className="info-producto text-center p-4 Bellota-text">
                     <h3 className="text-center mb-3 Bellota-text-bold">{nombre}</h3>
                     <p>{descripcion}</p>
-                    <p className="precio font-weight-bold">$ {precio}</p>
+                    <p className="precio font-weight-bold">$ {precio*contador}</p>
                     <Contador
                     contador={contador}
                     setContador={setContador}

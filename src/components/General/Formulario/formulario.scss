@@ -1,8 +1,8 @@
 
-@import "../../styles/main.scss";
+@import "../../../styles/main.scss";
 
 .form_body {
-  background: url("../../assets/images/lenceria.jpg") center fixed;
+  background: url("../../../assets/images/lenceria.jpg") center fixed;
   background-size: cover;
 }
 
@@ -33,8 +33,9 @@
 
 @media only screen and (max-width: 576px) {
   .form_body {
-    padding-top:30%;
+
     width: 100%;
+    min-height: 800px;
   }
 
   .formulario h1 {

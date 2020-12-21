@@ -2,18 +2,19 @@ import React, {Fragment} from 'react';
 
 import './nav.scss';
 
-import logo from '../../assets/images/sextopy_logo.svg';
+import logo from '../../../assets/images/sextopy_logo.svg';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import DrawerLeft from '../DrawerLeft/DrawerLeft';
 import DrawerRight from '../DrawerRight/DrawerRight';
 
 const Nav = () => {
+    
     return (
         <Fragment>
         <header className="container-fluid Bellota-text">
         <section className="navbar-section d-flex justify-content-between ">
-        <div className="navbar-menulogo d-flex align-items-center color-primario-solid">
+        <div className="navbar-menulogo d-flex align-items-center">
             <DrawerLeft />
                 <a href="#index" className="icons ml-3 p-1">
                     <div className="d-flex">

@@ -1,9 +1,9 @@
 import React from 'react';
-import SectionCards from '../SectionCards/SectionCards';
-import '../Home/Home.scss';
+import SectionCards from '../../Index/SectionCards/SectionCards';
+import './Home.scss';
 
 import { Fragment, useState, useEffect } from 'react';
-import productosDB from "../../database/db";
+import productosDB from "../../../database/db";
 
 
 const Home = ({carritoCompra, setCarritoCompra}) => {
@@ -15,7 +15,7 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
   const getProductos = new Promise ((resolve,reject)=>{
     setTimeout(() => {
       resolve(productosDB);
-    }, 3000)
+    }, 2000)
   })
 
 /*     getProductos

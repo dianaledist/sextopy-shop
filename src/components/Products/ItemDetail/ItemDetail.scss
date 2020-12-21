@@ -1,0 +1,10 @@
+.contenedor {
+    background: var(--blanco);
+    border-radius: 1.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+
+    & .img-transform:hover {
+            transform: scale(1.2);
+         }
+}
+

@@ -1,6 +1,6 @@
 import React  from 'react';
 import './formulario.scss';
-import mouthImage from '../../assets/images/erotic-mouth.png';
+import mouthImage from '../../../assets/images/erotic-mouth.png';
 import Swal from 'sweetalert2';
 
 const Formulario = ({nombre, email}) => {
@@ -48,7 +48,7 @@ const Formulario = ({nombre, email}) => {
                         <label className="Bellota-text-bold">E-mail</label>            
                         <input type="email" className="form-control input-form Bellota-text" placeholder="Tu mejor email..." id="email-form" />
                         <label className="Bellota-text-bold">Comentarios</label>  
-                        <textarea name="" id="" className="form-control input-form Bellota-text" placeholder="Contanos como podríamos satisfacer tus deseos..."></textarea> 
+                        <textarea name="" id="" className="form-control input-form Bellota-text" placeholder="¿Cómo podríamos satisfacer tus deseos?"></textarea> 
                         <input type="submit" className="btn btn-rosa mt-3 form-control border-0 Bellota-text" value="Enviar"/>   
                                         
                     </form>
