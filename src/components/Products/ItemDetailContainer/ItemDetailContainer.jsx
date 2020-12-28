@@ -14,7 +14,7 @@ const ItemListContainer = () => {
     const getProductos = new Promise ((resolve,reject)=>{
         setTimeout(() => {
           resolve(productosDB1);
-        }, 2000)
+        }, 1500)
       })
 
       useEffect(() => {

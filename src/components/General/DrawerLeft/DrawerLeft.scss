@@ -2,5 +2,13 @@
     font-family: "Bellota Text" !important;
 }
 
+.MuiButtonBase-root {
+    color:black !important;
+}
 
-  
+.links {
+    & :hover {
+        color:  #b41039;
+        text-decoration: underline;
+    }
+}

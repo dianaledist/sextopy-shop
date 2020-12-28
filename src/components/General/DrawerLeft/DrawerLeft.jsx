@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import {Link} from 'react-router-dom';
 
 import './DrawerLeft.scss';
 
@@ -20,6 +21,7 @@ const useStyles = makeStyles({
     width: 'auto',
   },
 });
+
 
 export default function TemporaryDrawer() {
   const classes = useStyles();
@@ -37,6 +39,30 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+  const menuItems = [
+    {
+        texto: 'Home',
+        ruta: '/',
+    },
+    {
+        texto: 'Ropa íntima',
+        ruta: '/category/ropa-intima',
+    },
+    {
+        texto: 'Accesorios',
+        ruta: '/category/accesorios',
+    },
+    {
+        texto: 'Juguetes eróticos',
+        ruta: '/category/juguetes-eroticos',
+    },
+    {
+        texto: 'Novedades',
+        ruta: '/category/novedades',
+    },
+  ]
+  
+
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -47,11 +73,12 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawerLeft(anchor, false)}
       
     >
-      <List >
-        {['Ropa íntima', 'Accesorios', 'Juguetes eróticos', 'Novedades'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} className="Bellota-text" />
+      <List className="links">
+        {menuItems.map((text, index) => (
+          <Link to={text.ruta}><ListItem button key={index}>
+            <ListItemText primary={text.texto} className="Bellota-text" />
           </ListItem>
+          </Link>
         ))}
       </List>
     

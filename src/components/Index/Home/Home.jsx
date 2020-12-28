@@ -15,7 +15,7 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
   const getProductos = new Promise ((resolve,reject)=>{
     setTimeout(() => {
       resolve(productosDB);
-    }, 2000)
+    }, 1500)
   })
 
 /*     getProductos

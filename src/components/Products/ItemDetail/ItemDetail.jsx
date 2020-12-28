@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import './ItemDetail.scss';
 import Contador from '../../utils/Contador';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {Link} from 'react-router-dom';
+                 
 
 const ItemDetail = ({producto}) => {
     const {id, url, nombre, descripcion, cttas, precio, stock} = producto;
@@ -12,6 +15,7 @@ const ItemDetail = ({producto}) => {
 
     return ( 
         <div className="container contenedor p-5 mb-5 animate__animated animate__zoomIn">
+            <Link to="/" className="links"><ArrowBackIcon /></Link>
             <div className="row text-center align-items-center">
                 <div className="col-12 col-md-6">
                     <div className="overlay">

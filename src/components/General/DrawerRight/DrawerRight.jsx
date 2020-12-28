@@ -54,7 +54,7 @@ export default function TemporaryDrawer() {
           <ListItem button key={text}>
             <ListItemText primary={text} />
           </ListItem>
-          <div>🖤 </div>
+          <div className="text-center">🖤 </div>
           </Fragment>
         ))}
       </List>
