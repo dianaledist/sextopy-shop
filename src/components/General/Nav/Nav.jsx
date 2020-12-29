@@ -16,7 +16,7 @@ const Nav = () => {
         <section className="navbar-section d-flex justify-content-between ">
         <div className="navbar-menulogo d-flex align-items-center">
             <DrawerLeft />
-                <a href="#index" className="icons ml-3 p-1">
+                <a href="/" className="icons ml-3 p-1">
                     <div className="d-flex">
                     <img src={logo}  width="60%" alt="logo sextopy"/>
                     </div>

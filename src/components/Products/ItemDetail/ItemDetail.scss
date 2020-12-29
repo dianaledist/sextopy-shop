@@ -8,3 +8,10 @@
          }
 }
 
+.links {
+    color: black;
+    & :hover {
+        color: #b41039;
+        text-decoration: underline;
+    }
+}

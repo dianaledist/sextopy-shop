@@ -29,3 +29,11 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.links {
+  color: black;
+ & :hover {
+   color: #b41039;
+   text-decoration: underline;
+ }
+}
