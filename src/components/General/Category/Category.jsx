@@ -10,7 +10,7 @@ const Category = () => {
 
     return (
         <>
-            <div className="pt-5 pb-5 text-center">
+            <div className="pt-5 pb-5 text-center Shrikhand">
             <h1>Sección {category_name}</h1>
             </div>
         </>

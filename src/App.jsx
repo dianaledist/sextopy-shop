@@ -9,7 +9,7 @@ import Home from './components/Index/Home/Home';
 import Footer from './components/General/Footer/Footer';
 import Error404 from './components/General/Error404/index';
 import Category from './components/General/Category/Category';
-import ItemDetailContainer from './components/Products/ItemDetailContainer/ItemDetailContainer';
+import Detail from './components/General/Detail/Detail';
    
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
           />
         </Route>
         <Route path="/detail/:id">
-          <ItemDetailContainer/>
+          <Detail/>
         </Route>
         <Route path="/category/:category_name">
           <Category/>

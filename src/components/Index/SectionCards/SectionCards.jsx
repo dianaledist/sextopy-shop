@@ -24,7 +24,9 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra}) =>
               
                 <img src={url} alt={nombre} className="img-fluid pt-3"/>
                 <div className="info-producto text-center p-4 Bellota-text">
-                    <Link to="/detail/:id" className="links"><h3 className="text-center mb-3 Bellota-text-bold">{nombre}</h3></Link>
+                    <Link to="/detail/:id" className="links">
+                        <h3 className="text-center mb-3 Bellota-text-bold">{nombre}</h3>
+                    </Link>
                     <p>{descripcion}</p>
                     <p className="precio font-weight-bold">$ {precio*contador}</p>
                     <Contador

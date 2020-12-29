@@ -3,19 +3,20 @@ import SectionCards from '../../Index/SectionCards/SectionCards';
 import './Home.scss';
 
 import { Fragment, useState, useEffect } from 'react';
-import productosDB from "../../../database/db";
+/* import productosDB from "../../../database/db"; */
+import productosDB from "../../../database/db.json";
 
 
 const Home = ({carritoCompra, setCarritoCompra}) => {
 
     const [productos, setProductos] =useState([]);
 
- /*     console.log(JSON.stringify(productos)); */
+    /*  console.log(JSON.stringify(productosDB)); */
 
   const getProductos = new Promise ((resolve,reject)=>{
     setTimeout(() => {
-      resolve(productosDB);
-    }, 1500)
+      true?resolve(productosDB):reject("Error 500");
+    }, 500)
   })
 
 /*     getProductos
@@ -36,11 +37,12 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
             <>
             {productos.map(producto => (
               <SectionCards 
-           /*    productos={productos} */
+              productos={productos}
               key={producto.id}
               producto={producto} 
               carritoCompra={carritoCompra}
               setCarritoCompra={setCarritoCompra}
+              
               />        
             ))} 
             </> :

@@ -1,27 +1,26 @@
 import React, { Fragment, useState, useEffect }  from 'react';
 /* import productosDB from "../../../database/db";
  */import ItemDetail from "../ItemDetail/ItemDetail";
-import productxmas1 from "../../../assets/images/productxmas1.jpg";
+/* import productxmas1 from "../../../assets/images/productxmas1.jpg"; */
+import productosDB from "../../../database/db.json";
 
-const ItemListContainer = () => {
-
-  const productosDB1 = [
-      { id: 1, nombre: 'Tanga xmas', url:productxmas1, descripcion:'El regalo más original para empezar el año con la mejor suerte', cttas: 'Ropa interior hecho 100% de algodón y materia prima ecológica. Calza perfecto en cualquier cuerpx. Varias tallas y colores a disposición.', precio: 50, stock:15},
-  ]
+const ItemListContainer = ({producto, key}) => {
 
     const [productos, setProductos] =useState([]);
 
     const getProductos = new Promise ((resolve,reject)=>{
         setTimeout(() => {
-          resolve(productosDB1);
-        }, 1500)
+          var item = productosDB.filter(prod=>prod.id===1); 
+            resolve(item);
+ /*          resolve(productosDB); */
+        }, 500)
       })
 
       useEffect(() => {
         getProductos.then(rta=>setProductos(rta))
       }, [])
 
-      console.log(productos);
+      console.log(producto);
 
     return (
         <Fragment>
