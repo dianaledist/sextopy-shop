@@ -60,6 +60,7 @@ export default function TemporaryDrawer() {
         texto: 'Novedades',
         ruta: '/category/novedades',
     },
+
   ]
   
 

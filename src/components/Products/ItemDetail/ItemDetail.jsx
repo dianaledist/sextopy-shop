@@ -3,10 +3,12 @@ import './ItemDetail.scss';
 import Contador from '../../utils/Contador';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {Link} from 'react-router-dom';
+import Comments from '../Comments/Comments';
                  
 
-const ItemDetail = ({producto}) => {
-    const {id, url, nombre, descripcion, cttas, precio, stock} = producto;
+const ItemDetail = ({item}) => {
+    const {id, url, nombre, descripcion, cttas, precio, stock} = item;
+
     const [contador, setContador]= useState(1);
 
     function agregarCarrito() {
@@ -14,6 +16,7 @@ const ItemDetail = ({producto}) => {
     }
 
     return ( 
+        <>
         <div className="container contenedor p-5 mb-5 animate__animated animate__zoomIn">
             <Link to="/" className="links"><ArrowBackIcon /></Link>
             <div className="row text-center align-items-center">
@@ -35,10 +38,10 @@ const ItemDetail = ({producto}) => {
                     />
                     <a href="#index" className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => agregarCarrito(id)}>Agregar al Carrito</a>
                 </div>
-            </div>
-
-
+            </div>  
         </div>
+        <Comments/>
+        </>
       );
 }
  
