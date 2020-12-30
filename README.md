@@ -5,8 +5,6 @@ _[ENG] E-commerce site made with React JS, SASS & Firebase_
 
 ## Comenzando 🚀
 
-_Descargá el archivo a tu pc, agregá node_modules de activación y listo! Con npm start empieza a funcionar el sitio. _
-
 ## Construido con 🛠️
 
 _Algunas herramientas usadas en el proyecto_
@@ -18,4 +16,3 @@ _Algunas herramientas usadas en el proyecto_
 ## Autora ✒️
 
 * **Diana Leonor Di Stefano** - *psychologist and digital designveloper* - [Diana Leonor Di Stefano](https://www.linkedin.com/in/dianaledist/)
-

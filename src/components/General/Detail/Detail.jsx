@@ -12,7 +12,7 @@ const Detail = () => {
     return (
         <>
             <ItemDetailContainer
-            id={id}/>
+            key={id}/>
         </>
     )
 }

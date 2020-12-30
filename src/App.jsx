@@ -9,7 +9,8 @@ import Home from './components/Index/Home/Home';
 import Footer from './components/General/Footer/Footer';
 import Error404 from './components/General/Error404/index';
 import Category from './components/General/Category/Category';
-import Detail from './components/General/Detail/Detail';
+/* import Detail from './components/General/Detail/Detail'; */
+import ItemDetailContainer from './components/Products/ItemDetailContainer/ItemDetailContainer';
    
 
 function App() {
@@ -31,13 +32,15 @@ function App() {
 
       <Switch>
         <Route exact path="/">
+        <h1 className="Shrikhand text-center p-5">Disfrutá tu cuerpo con estas propuestas 🖤 </h1>
+        <h2 className="Shrikhand text-center p-2">Productos recomendados</h2>
           <Home
           carritoCompra={carritoCompra}
           setCarritoCompra={setCarritoCompra}
           />
         </Route>
-        <Route path="/detail/:id">
-          <Detail/>
+        <Route path="/detail/:id?">
+          <ItemDetailContainer/>
         </Route>
         <Route path="/category/:category_name">
           <Category/>
@@ -55,7 +58,6 @@ function App() {
       />
       <Footer
             fecha={fecha}
-            titulo='Made with 🖤 by Diana Leonor Di Stefano @ disatechgo &copy;'
       />
     </BrowserRouter>
     

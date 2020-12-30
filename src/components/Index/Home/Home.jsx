@@ -16,7 +16,7 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
   const getProductos = new Promise ((resolve,reject)=>{
     setTimeout(() => {
       true?resolve(productosDB):reject("Error 500");
-    }, 500)
+    }, 1000)
   })
 
 /*     getProductos
@@ -29,24 +29,26 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
 
     return ( 
         <Fragment>
-        <h1 className="Shrikhand text-center p-5">Disfrutá tu cuerpo con estas propuestas 🖤 </h1>
+        
         <div className="container">
           <div className="mt-4 row d-flex justify-content-center">
           {
             productos.length ?
             <>
-            {productos.map(producto => (
-              <SectionCards 
-              productos={productos}
-              key={producto.id}
-              producto={producto} 
-              carritoCompra={carritoCompra}
-              setCarritoCompra={setCarritoCompra}
-              
-              />        
+            {productos.map((producto, index) => (
+                  <SectionCards 
+                  productos={productos}
+                  key={index+1}
+                  idproducto={producto.id}
+                  producto={producto} 
+                  carritoCompra={carritoCompra}
+                  setCarritoCompra={setCarritoCompra}              
+                  /> 
+
             ))} 
             </> :
             <p className="loading pb-5">Cargando los productos de Sextopy 💜 </p>
+
           }
                   
           </div>

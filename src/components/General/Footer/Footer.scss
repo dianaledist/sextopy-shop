@@ -1,5 +1,12 @@
 .footer {
     background-color:  #b41039;
     color: white;
-
+ & .links {
+     color: black;
+     &:hover{
+         color: white !important;
+         border-bottom-style: dotted;
+         text-decoration: none;
+     }
+ }
 }

@@ -1,5 +1,5 @@
 import productxmas1 from "../assets/images/productxmas1.jpg";
-import productxmas2 from "../assets/images/productxmas2.jpg";
+import productxmas2 from "../assets/images/productxmas--.jpg";
 import productxmas3 from "../assets/images/productxmas3.jpg";
 
 const productosDB = [
