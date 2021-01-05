@@ -5,6 +5,7 @@ _[ENG] E-commerce site made with React JS, SASS & Firebase_
 
 ## Comenzando 🚀
 
+
 _Descargá el archivo a tu pc, agregá las siguientes dependencias de activación y listo! Con npm start empieza a funcionar el sitio. _
 ## Dependencias (node_modules) 🛠️
 
@@ -22,6 +23,7 @@ _Descargá el archivo a tu pc, agregá las siguientes dependencias de activació
 * "react-scripts": "4.0.1",
 * "sweetalert2": "^10.11.1",
 * "web-vitals": "^0.2.4" 
+
 
 
 ## Construido con 🛠️
