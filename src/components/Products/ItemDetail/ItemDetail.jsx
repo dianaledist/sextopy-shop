@@ -2,19 +2,29 @@ import React, {useState} from 'react';
 import './ItemDetail.scss';
 import Contador from '../../utils/Contador';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import Comments from '../Comments/Comments';
-                 
+import Swal from 'sweetalert2';
 
 const ItemDetail = ({item}) => {
     const {id, url, nombre, descripcion, cttas, precio, stock} = item;
 
     const [contador, setContador]= useState(1);
+    const [redirect, setRedirect] = useState(false);
+    const [confirmMessage, setConfirmMessage] = useState("")
 
-    function agregarCarrito() {
-        console.log("agregando....");
+    function onAdd() {
+        setConfirmMessage(Swal.fire({
+            title: `Has agregado ${contador} items al carrito `,
+            icon: 'success',
+            width: 600,
+            padding: '3em',
+          }))
+
+          setTimeout(() => {
+            setRedirect(true);
+          }, 1000);
     }
-
     return ( 
         <>
         <div className="container contenedor p-5 mb-5 animate__animated animate__zoomIn">
@@ -36,7 +46,8 @@ const ItemDetail = ({item}) => {
                     stock={stock}
                     id={id}
                     />
-                    <a href="#index" className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => agregarCarrito(id)}>Agregar al Carrito</a>
+                    <button className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => onAdd(id)}>Agregar al Carrito</button>
+                    { redirect && <Redirect to="/cart"/> }
                 </div>
             </div>  
         </div>
