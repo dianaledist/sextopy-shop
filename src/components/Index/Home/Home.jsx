@@ -5,6 +5,7 @@ import './Home.scss';
 import { Fragment, useState, useEffect } from 'react';
 /* import productosDB from "../../../database/db"; */
 import productosDB from "../../../database/db.json";
+import spinner from "../../../assets/images/spinner.gif";
 
 
 const Home = ({carritoCompra, setCarritoCompra}) => {
@@ -44,10 +45,12 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
                   carritoCompra={carritoCompra}
                   setCarritoCompra={setCarritoCompra}              
                   /> 
-
             ))} 
             </> :
-            <p className="loading pb-5">Cargando los productos de Sextopy 💜 </p>
+            <>
+            <p className="loading">Cargando los productos de Sextopy 💜 </p>
+            <img src={spinner} alt="loading"/>
+            </>
 
           }
                   

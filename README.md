@@ -21,7 +21,9 @@ _Descargá el archivo a tu pc, agregá las siguientes dependencias de activació
 * "react-router-dom": "^5.2.0",
 * "react-scripts": "4.0.1",
 * "sweetalert2": "^10.11.1",
-* "web-vitals": "^0.2.4"
+* "web-vitals": "^0.2.4" 
+
+
 ## Construido con 🛠️
 
 _Algunas herramientas usadas en el proyecto_

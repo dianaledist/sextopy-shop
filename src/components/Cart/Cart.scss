@@ -1,0 +1,12 @@
+.card-producto {
+    background: var(--blanco);
+    border-radius: 1.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width:600px){
+    th {
+        width: 100% !important;
+        display: block !important;
+    }
+}

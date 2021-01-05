@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import './SectionCards.scss';
 import Contador from '../../utils/Contador';
-import {Link, useParams} from 'react-router-dom';
-
+import {Link, useParams, Redirect} from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const SectionCards = ({key, producto, productos, carritoCompra, setCarritoCompra, idproducto, props}) => {
 
@@ -10,10 +10,22 @@ const SectionCards = ({key, producto, productos, carritoCompra, setCarritoCompra
     const {id} = useParams()
 
     const [contador, setContador]= useState(1);
+    const [redirect, setRedirect] = useState(false);
+    const [confirmMessage, setConfirmMessage] = useState("")
 
-    function agregarCarrito() {
-        alert(`Has agregado ${contador} items al carrito`);
+    function onAdd() {
+        setConfirmMessage(Swal.fire({
+            title: `Has agregado ${contador} items al carrito `,
+            icon: 'success',
+            width: 600,
+            padding: '3em',
+          }))
+
+          setTimeout(() => {
+            setRedirect(true);
+          }, 1000);
     }
+
     console.log(idproducto)
 
     return (
@@ -37,7 +49,8 @@ const SectionCards = ({key, producto, productos, carritoCompra, setCarritoCompra
                     stock={stock}
                     /* id={id} */
                     />
-                    <a href="#index" className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => agregarCarrito(id)}>Agregar al Carrito</a>
+                    <button className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => onAdd(id)}>Agregar al Carrito</button>
+                    { redirect && <Redirect to="/cart"/> }
                 </div>
             </div>
             </div>  
