@@ -42,10 +42,6 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  function onRemove(){
-    console.log('hola');
-}
-
   const listRight = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -94,6 +90,14 @@ export default function TemporaryDrawer() {
     </div>
   );
 
+  const onDelete = () => {	
+    setData({
+      items: [],
+      itemsQuantity: [],
+      cantidad: 0
+    })
+  }
+
 
 
 
@@ -104,12 +108,13 @@ export default function TemporaryDrawer() {
                 <Button onClick={toggleDrawerRight(anchor, true)}><NavShopItem/> </Button>
                 <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawerRight(anchor, false)}>
                     {listRight(anchor)}
-                    <p>Tu cesta sextopy</p>        
+                    <div className="Bellota-text">
+                    <h5 className="Shrikhand">Tu cesta sextopy</h5>        
                       {
                         data.items.length ?
 
                         data.items.map((item,index)=>
-                          <>
+                          <>                          
                         <CartList key={item.id} item={item} id={item.id}/>
                         
                         </>
@@ -117,8 +122,11 @@ export default function TemporaryDrawer() {
                         :
                         <p>Cesta vacía</p>
                       }
-                      <Link to='/cart' ><button className="btn color-primario text-white btn-lg text-uppercase mt-3" >Ver Carrito</button></Link>
-                      <div className="text-center">🖤 </div>
+                      </div>
+                        <button className="btn color-primario text-uppercase mt-3 Bellota-text" ><Link to='/cart' className="text-white">Ver Carrito</Link></button>
+                        <button className="btn btn-secondary text-white Bellota-text text-uppercase mt-3" onClick={ () => onDelete()}>Vaciar</button>
+                        <div className="text-center">🖤 </div>
+
                 </Drawer>
                 </React.Fragment>
             ))}

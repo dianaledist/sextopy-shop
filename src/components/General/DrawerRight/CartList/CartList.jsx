@@ -13,12 +13,15 @@ const CartList = ({item,id}) => {
             ...data, 
             items: filter 
         });
-
     }
+
+    console.log(data.items.length)
 
     return (
     <>
-    <p key={item.id}>{item.nombre} - ID: {id}<CancelIcon onClick={ () => onRemove(id)}/></p>
+    <div className="d-flex align-items-center justify-content-around my-3">
+    <img src={item.url} alt={item.nombre} className="img-fluid" width="15%"/><p key={item.id} className="mb-0">{item.nombre}</p><CancelIcon onClick={ () => onRemove(id)}/>
+    </div>
     </>
     );
 }

@@ -11,7 +11,6 @@ import spinner from "../../../assets/images/spinner.gif";
 const Home = ({carritoCompra, setCarritoCompra}) => {
 
     const [productos, setProductos] =useState([]);
-    const [itemCarrito, setItemCarrito] = useState({});
 
 
     /*  console.log(JSON.stringify(productosDB)); */
@@ -49,9 +48,7 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
                   productos={productos}
                   key={producto.id}
                   idproducto={producto.id}
-                  producto={producto} 
-                  carritoCompra={carritoCompra}
-                  setCarritoCompra={setCarritoCompra}              
+                  producto={producto}           
                   /> 
             ))} 
             </> :

@@ -13,12 +13,12 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
 
     const [contador, setContador]= useState(1);
 
-    const [quantity] = useState(1);
     const [redirect, setRedirect] = useState(false);
     const [confirmMessage, setConfirmMessage] = useState("")
 
     const onAdd = () => {	
         localStorage.setItem('productos_agregados', JSON.stringify(data.items));
+
         const existingProduct=data.items.find((prod) => prod.id === idproducto);
         console.log(existingProduct)
 
@@ -27,24 +27,20 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
             setData({
                 items: [...data.items],
                 itemsQuantity: [...data.itemsQuantity, contador],
-            cantidad: data.cantidad + contador,
+                cantidad: data.cantidad + contador,
             })
         } else {
+
             setData({
                 itemsQuantity: [...data.itemsQuantity, contador],
-            cantidad: data.cantidad + contador,
+                cantidad: data.cantidad + contador,
                 items: [...data.items, producto],  
             })
+       
+            data.items.quantity+=contador;
+
         }
-        /* setData({
-            ...data, 
-            itemsQuantity: [...data.itemsQuantity, contador],
-            cantidad: data.cantidad + contador,
-            items: [...data.items, producto],        
-        }); */
 
-
-        /* alert(`Agregaste ${qty} productos al carrito`);	 */
         setConfirmMessage(Swal.fire({
             title: `Has agregado ${contador} items al carrito `,
             icon: 'success',
@@ -66,9 +62,7 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
         <Fragment>
             
            <div className="col-12 col-lg-4 mb-4">
-
-            <div className="card-producto text-center animate__animated animate__zoomIn" >
-              
+            <div className="card-producto text-center animate__animated animate__zoomIn" >              
                 <img src={url} alt={nombre} className="img-fluid pt-3"/>
                 <div className="info-producto text-center p-4 Bellota-text">
                     <Link to={`/detail/${idproducto}`} className="links">

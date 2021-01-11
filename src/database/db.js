@@ -12,7 +12,7 @@ const productosDB = [
         cttas: 'Realizado 100% con fibras de origen natural. Super confortable para todos los cuerpos. Varios talles disponibles',
         precio: 50, 
         stock:15,
-        quantity:1,
+        quantity:0,
         destacado: true
     },
     { 
@@ -24,7 +24,7 @@ const productosDB = [
         cttas: 'Conjunto delicado con varios detalles en encaje. Elastizado y perfecto para cualquier cuerpx. Gran decisión para estar en casa, ¿por qué no?',
         precio: 40, 
         stock:10,
-        quantity:1,
+        quantity:0,
         destacado: false
     },
     { 
@@ -36,7 +36,7 @@ const productosDB = [
         cttas: 'Tanga funny para cualquier persona que quiera divertirse en estas fiestas. Además de cómoda, super divertida!',
         precio: 60, 
         stock:20,
-        quantity:1,
+        quantity:0,
         destacado: true
     },
     { 
@@ -48,7 +48,7 @@ const productosDB = [
         cttas: 'Realizado 100% con fibras de origen natural. Super confortable para todos los cuerpos. Varios talles disponibles',
         precio: 50, 
         stock:15,
-        quantity:1,
+        quantity:0,
         destacado: false
     },
     { 
@@ -60,7 +60,7 @@ const productosDB = [
         cttas: 'Conjunto delicado con varios detalles en encaje. Elastizado y perfecto para cualquier cuerpx. Gran decisión para estar en casa, ¿por qué no?',
         precio: 40, 
         stock:10,
-        quantity:1,
+        quantity:0,
         destacado: false
     },
     { 
@@ -72,7 +72,7 @@ const productosDB = [
         cttas: 'Tanga funny para cualquier persona que quiera divertirse en estas fiestas. Además de cómoda, super divertida!',
         precio: 60, 
         stock:20,
-        quantity:1,
+        quantity:0,
         destacado: true
     }
 ]
