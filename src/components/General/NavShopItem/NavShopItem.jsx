@@ -1,10 +1,15 @@
 import React from 'react';
+import {useContext} from 'react';
+import {Store} from '../../../store';
 
 const NavShopItem = () => {
+    const [data, setData] = useContext(Store);
+    console.log(data);
+
     return ( 
-        <a href="#index" className="icons shop_image">                            
-            <span className="shop_cantidad d-flex justify-content-center pt-2">0</span>
-        </a>  
+        <div className="icons shop_image">                            
+            <span className="shop_cantidad d-flex justify-content-center pt-2">{data.cantidad}</span>
+        </div>  
      );
 }
  

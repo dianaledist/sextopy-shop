@@ -24,9 +24,9 @@ const Nav = () => {
         </div>
                 <div className="navbar-right d-flex justify-content-end">
                     <div className="d-flex align-items-center">
-                        <a href="#index" className="icons">
+                        
                             <ExitToAppIcon fontSize="large" className="icons d-none d-md-block mr-2" />
-                        </a>
+                        
                        <DrawerRight/>
                                   
                     </div>

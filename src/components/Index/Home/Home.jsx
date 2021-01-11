@@ -3,8 +3,8 @@ import SectionCards from '../../Index/SectionCards/SectionCards';
 import './Home.scss';
 
 import { Fragment, useState, useEffect } from 'react';
-/* import productosDB from "../../../database/db"; */
-import productosDB from "../../../database/db.json";
+import productosDB from "../../../database/db";
+/* import productosDB from "../../../database/db.json"; */
 import spinner from "../../../assets/images/spinner.gif";
 
 
@@ -12,11 +12,17 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
 
     const [productos, setProductos] =useState([]);
 
+
     /*  console.log(JSON.stringify(productosDB)); */
 
   const getProductos = new Promise ((resolve,reject)=>{
-    setTimeout(() => {
-      true?resolve(productosDB):reject("Error 500");
+    const productos_destacados = productosDB.filter(item=> {
+      return item.destacado===true
+
+    })
+    setTimeout(() => {      
+      true?resolve(productos_destacados):reject("Error 500");
+
     }, 1000)
   })
 
@@ -30,7 +36,8 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
 
     return ( 
         <Fragment>
-        
+        <h1 className="Shrikhand text-center p-5">Disfrutá tu cuerpo con estas propuestas 🖤 </h1>
+        <h2 className="Shrikhand text-center p-2">Productos recomendados</h2>
         <div className="container">
           <div className="mt-4 row d-flex justify-content-center">
           {
@@ -39,11 +46,9 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
             {productos.map((producto, index) => (
                   <SectionCards 
                   productos={productos}
-                  key={index+1}
+                  key={producto.id}
                   idproducto={producto.id}
-                  producto={producto} 
-                  carritoCompra={carritoCompra}
-                  setCarritoCompra={setCarritoCompra}              
+                  producto={producto}           
                   /> 
             ))} 
             </> :

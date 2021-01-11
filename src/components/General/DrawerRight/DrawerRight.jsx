@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useContext} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -6,12 +6,13 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
 import NavShopItem from '../NavShopItem/NavShopItem';
+import CancelIcon from '@material-ui/icons/Cancel';
+import {Link} from 'react-router-dom';
 
 import './DrawerRight.scss';
-
-
+import {Store} from '../../../store';
+import CartList from './CartList/CartList';
 
 
 const useStyles = makeStyles({
@@ -31,6 +32,8 @@ export default function TemporaryDrawer() {
 
   });
 
+  const [data, setData]= useContext(Store);
+
   const toggleDrawerRight= (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -48,18 +51,52 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawerRight(anchor, false)}
       onKeyDown={toggleDrawerRight(anchor, false)}
     >
-      <List>
-        {['Tu cesta del placer está vacía'].map((text, index) => (
+     
+        {/* <p>Tu cesta sextopy</p>
+        
+          {
+            data.items.length ?
+
+            data.items.map((item,index)=>
+              <>
+            <p key={index}>{item.nombre} - {data.itemsQuantity[index]}<CancelIcon onClick={ () => onRemove()}/></p>
+            
+            </>
+            )
+            :
+            <p>Cesta vacía</p>
+          }
+          <Link to='/cart' ><button className="btn color-primario text-white btn-lg text-uppercase mt-3" >Ver Carrito</button></Link>
+          <div className="text-center">🖤 </div> */}
+        {/* {['Tu cesta'].map((text, index) => (
           <Fragment>
           <ListItem button key={text}>
             <ListItemText primary={text} />
           </ListItem>
+          {
+            data.items.length ?
+            data.items.map(items=>
+              <>
+            <p>{items.nombre}</p><button></button>
+            </>
+             )
+            :
+            <p>Cesta vacía</p>
+          }
           <div className="text-center">🖤 </div>
           </Fragment>
-        ))}
-      </List>
+        ))} */}
+      
     </div>
   );
+
+  const onDelete = () => {	
+    setData({
+      items: [],
+      itemsQuantity: [],
+      cantidad: 0
+    })
+  }
 
 
 
@@ -71,6 +108,25 @@ export default function TemporaryDrawer() {
                 <Button onClick={toggleDrawerRight(anchor, true)}><NavShopItem/> </Button>
                 <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawerRight(anchor, false)}>
                     {listRight(anchor)}
+                    <div className="Bellota-text">
+                    <h5 className="Shrikhand">Tu cesta sextopy</h5>        
+                      {
+                        data.items.length ?
+
+                        data.items.map((item,index)=>
+                          <>                          
+                        <CartList key={item.id} item={item} id={item.id}/>
+                        
+                        </>
+                        )
+                        :
+                        <p>Cesta vacía</p>
+                      }
+                      </div>
+                        <button className="btn color-primario text-uppercase mt-3 Bellota-text" ><Link to='/cart' className="text-white">Ver Carrito</Link></button>
+                        <button className="btn btn-secondary text-white Bellota-text text-uppercase mt-3" onClick={ () => onDelete()}>Vaciar</button>
+                        <div className="text-center">🖤 </div>
+
                 </Drawer>
                 </React.Fragment>
             ))}
