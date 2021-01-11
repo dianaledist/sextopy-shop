@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useEffect }  from 'react';
 import { useParams, Link } from "react-router-dom";
-/* import productosDB from "../../../database/db";
- */import ItemDetail from "../ItemDetail/ItemDetail";
-/* import productxmas1 from "../../../assets/images/productxmas1.jpg"; */
-import productosDB from "../../../database/db.json";
+import productosDB from "../../../database/db";
+import ItemDetail from "../ItemDetail/ItemDetail";
+
+/* import productosDB from "../../../database/db.json"; */
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
@@ -31,7 +31,7 @@ const ItemListContainer = ({producto, key, idProducto}) => {
         <Fragment>
         <h1 className="Shrikhand text-center p-5">Detalles del producto </h1>
         <div className="container">
-          <div className="mt-4 row d-flex  Bellota-text">
+          <div className="mt-4 row d-flex d-flex justify-content-center align-items-center Bellota-text">
             {
               item ?
               <>
@@ -43,8 +43,9 @@ const ItemListContainer = ({producto, key, idProducto}) => {
                 />
               </> :
               <>
-              <Link to="/" className="links"><ArrowBackIcon /></Link>
-              <p className="loading pb-5">¿Estás buscando el producto correcto? 💜 </p>
+              <Link to="/" className="links pr-5 mb-5"><ArrowBackIcon /></Link>
+              <p className="loading mb-5">¿Estás buscando el producto correcto? 💜 </p>
+
               </>
             }
 
