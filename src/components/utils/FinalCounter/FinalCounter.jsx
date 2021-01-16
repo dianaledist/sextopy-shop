@@ -1,21 +1,21 @@
 import React, {useState, useContext} from 'react';
-import './contador.scss';
-import {Store} from '../../store/index';
+/* import './contador.scss'; */
+import {Store} from '../../../store';
 
-const Contador = ({contador,setContador,id,stock}) => {
+const FinalCounter = ({contador,setContador,cantidad,id,stock}) => {
+    const [qty, setQty] =useState(cantidad)
 
-    const [data, setData]=useContext(Store);    
+    const [data, setData]=useContext(Store);   
 
     const restarProducto = () => {
-        if(contador>0) {
-
-            setContador(contador - 1);
+        if(qty>0) {
+            setQty(qty - 1);
         }
     }
 
     function sumarProducto(){
-        if(contador<stock) {
-        setContador(contador+1)
+        if(qty<stock) {
+        setQty(qty+1)
         }
     }
 /* 
@@ -32,11 +32,11 @@ const Contador = ({contador,setContador,id,stock}) => {
             disabled={contador===1 ? 'disabled' : null } 
             className="btn color-primario text-white Bellota-text-bold boton-contador resta"  
             onClick={ () => restarProducto()}>-</button>
-            <input type="number" className="btn btn-light boton" value={contador} onChange={()=> "defaultValue"}/>
+            <input type="number" className="btn btn-light boton" value={qty} onChange={()=> "defaultValue"}/>
             <button className="btn color-primario text-white boton-contador" onClick={ () => sumarProducto()}>+</button>
         </>
 
       );
 }
  
-export default Contador;
+export default FinalCounter;

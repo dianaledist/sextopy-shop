@@ -1,9 +1,12 @@
 import ItemDetailContainer from '../../Products/ItemDetailContainer/ItemDetailContainer';
-import {useEffect} from 'react';
+import {useEffect, useContext} from 'react';
 import {useParams} from 'react-router-dom';
+import { Store } from '../../../store';
+
 
 const Detail = () => {
     const {id} = useParams();
+    const [data, setData]= useContext(Store);
 
     useEffect(() => {
         console.log(id);
@@ -12,6 +15,7 @@ const Detail = () => {
     return (
         <>
             <ItemDetailContainer
+            data={data}
             key={id}/>
         </>
     )

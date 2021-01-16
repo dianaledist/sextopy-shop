@@ -21,8 +21,8 @@ function App() {
     //State para un carrito de compras
     const [data, setData] =useState({
       items: [],
-      itemsQuantity: [],
-      cantidad: 0
+      cantidad: 0,
+      precioTotal:0 
     })   
 
     const fecha= new Date().getFullYear();

@@ -93,8 +93,8 @@ export default function TemporaryDrawer() {
   const onDelete = () => {	
     setData({
       items: [],
-      itemsQuantity: [],
-      cantidad: 0
+      cantidad: 0,
+      precioTotal: 0,
     })
   }
 
@@ -115,16 +115,24 @@ export default function TemporaryDrawer() {
 
                         data.items.map((item,index)=>
                           <>                          
-                        <CartList key={item.id} item={item} id={item.id}/>
+                        <CartList 
+                        key={item.id} 
+                        item={item} 
+                        id={item.id}     
+                        qty={item.quantity}                    
+                        />
+                      
                         
                         </>
                         )
                         :
                         <p>Cesta vacía</p>
                       }
-                      </div>
+                      </div>                      
+                        {/* <p>Precio Total: {data.precioTotal}</p> */}
                         <button className="btn color-primario text-uppercase mt-3 Bellota-text" ><Link to='/cart' className="text-white">Ver Carrito</Link></button>
                         <button className="btn btn-secondary text-white Bellota-text text-uppercase mt-3" onClick={ () => onDelete()}>Vaciar</button>
+                        
                         <div className="text-center">🖤 </div>
 
                 </Drawer>
