@@ -1,8 +1,9 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import CancelIcon from '@material-ui/icons/Cancel';
 import {Store} from '../../../../store';
+import Contador from '../../../utils/Contador';
 
-const CartList = ({item,id}) => {
+const CartList = ({item,id, qty}) => {
     const [data, setData]= useContext(Store);
 
     function onRemove(){
@@ -11,7 +12,8 @@ const CartList = ({item,id}) => {
         console.log(filter);
         setData({ 
             ...data, 
-            items: filter 
+            items: filter,
+            cantidad: data.cantidad-qty,
         });
     }
 
@@ -19,8 +21,9 @@ const CartList = ({item,id}) => {
 
     return (
     <>
-    <div className="d-flex align-items-center justify-content-around my-3">
-    <img src={item.url} alt={item.nombre} className="img-fluid" width="15%"/><p key={item.id} className="mb-0">{item.nombre}</p><CancelIcon onClick={ () => onRemove(id)}/>
+    <div className="d-flex align-items-center justify-content-around my-3" >
+    <img src={item.url} alt={item.nombre} className="img-fluid" width="15%"/><p  className="mb-0">{item.nombre} - Cantidad: {item.quantity}</p>
+    <CancelIcon onClick={ () => onRemove(id)}/>
     </div>
     </>
     );

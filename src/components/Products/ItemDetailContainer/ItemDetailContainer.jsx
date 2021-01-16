@@ -7,7 +7,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
-const ItemListContainer = ({producto, key, idProducto}) => {
+const ItemListContainer = ({data, producto, key, idProducto}) => {
 
     const [item, setItem] =useState([]);
 
@@ -36,7 +36,6 @@ const ItemListContainer = ({producto, key, idProducto}) => {
               item ?
               <>
                 <ItemDetail
-              
                 key={item.id}
                 item={item} 
                 url={item.url}

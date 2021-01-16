@@ -17,29 +17,57 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
     const [confirmMessage, setConfirmMessage] = useState("")
 
     const onAdd = () => {	
-        localStorage.setItem('productos_agregados', JSON.stringify(data.items));
 
         const existingProduct=data.items.find((prod) => prod.id === idproducto);
         console.log(existingProduct)
 
+        //data.items.quantity= data.items.quantity+=contador;
+        producto.quantity=producto.quantity+=contador;
+
+        console.log(data.items);
+        console.log(producto.quantity);    
+
         if (existingProduct) {
-            existingProduct.quantity += contador;
-            setData({
-                items: [...data.items],
-                itemsQuantity: [...data.itemsQuantity, contador],
+            //localStorage.setItem('productos_agregados', JSON.stringify(data.items));
+            setData({                
+                items: [...data.items],  
                 cantidad: data.cantidad + contador,
+                precioTotal: data.precioTotal + (producto.precio * contador)
             })
+            console.log(setData);
         } else {
-
+            
             setData({
-                itemsQuantity: [...data.itemsQuantity, contador],
-                cantidad: data.cantidad + contador,
-                items: [...data.items, producto],  
+                items: [ ...data.items, producto ],
+                cantidad: data.cantidad += contador,
+                precioTotal: data.precioTotal + (producto.precio * contador)
+                
             })
-       
-            data.items.quantity+=contador;
 
+    
+
+        /* if (existingProduct) {
+            setData({
+                //itemsQuantity: [...data.itemsQuantity, contador],
+                cantidad: data.cantidad + contador,
+                items: [...data.items, {item: producto, quantity: contador}],  
+                precioTotal: data.precioTotal + (producto.precio * contador)
+            })
+            console.log(setData);
+
+        } else {
+            // existingProduct.cantidad += contador;
+            setData({
+                ...data,
+                items: [ ...data.items, {item: producto, quantity: contador} ],
+                cantidad: data.cantidad + contador,
+                precioTotal: data.precioTotal + (producto.precio * contador)
+            }) */
+       
+            // data.items.quantity+=contador;
+            console.log(data);
         }
+            
 
         setConfirmMessage(Swal.fire({
             title: `Has agregado ${contador} items al carrito `,
@@ -62,7 +90,7 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
         <Fragment>
             
            <div className="col-12 col-lg-4 mb-4">
-            <div className="card-producto text-center animate__animated animate__zoomIn" >              
+            <div className="card-producto text-center animate__animated animate__zoomIn" key={idproducto}>              
                 <img src={url} alt={nombre} className="img-fluid pt-3"/>
                 <div className="info-producto text-center p-4 Bellota-text">
                     <Link to={`/detail/${idproducto}`} className="links">
@@ -70,12 +98,15 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
                     </Link>
                     <p>{descripcion}</p>
                     <p className="precio font-weight-bold">$ {precio*contador}</p>
+                    <div className="container">
                     <Contador
+                    key={idproducto}
                     contador={contador}
                     setContador={setContador}
                     stock={stock}
                     id={idproducto}
                     />
+                    </div>
                     <button className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => onAdd(id)}>Agregar al Carrito</button>
                     {/* { redirect && <Redirect to="/cart"/> } */}
                 </div>

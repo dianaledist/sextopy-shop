@@ -1,9 +1,16 @@
-import React  from 'react';
+import React, {useState}  from 'react';
 import './formulario.scss';
 import mouthImage from '../../../assets/images/erotic-mouth.png';
 import Swal from 'sweetalert2';
 
-const Formulario = ({nombre, email}) => {
+const Formulario = ({nombre,email}) => {
+
+    const [contacto,setContacto]= useState({
+        nombre: '',
+        email: '',
+        mensaje: ''
+    })
+
 
     console.log(nombre);
     const enviarForm = e => {
@@ -44,12 +51,28 @@ const Formulario = ({nombre, email}) => {
                     <form className="form-group w-100 h-100" onSubmit={enviarForm}>
                         <h3 className="Shrikhand">Escribinos</h3>
                         <label className="Bellota-text-bold">Nombre y apellido</label>            
-                        <input type="text" className="form-control input-form Bellota-text" placeholder="Escribe tu nombre aquí..." id="nombre-form" />
+                        <input 
+                            type="text" 
+                            className="form-control input-form Bellota-text" 
+                            placeholder="Escribe tu nombre aquí..." 
+                            id="nombre-form" />
                         <label className="Bellota-text-bold">E-mail</label>            
-                        <input type="email" className="form-control input-form Bellota-text" placeholder="Tu mejor email..." id="email-form" />
+                        <input 
+                            type="email" 
+                            className="form-control input-form Bellota-text" 
+                            placeholder="Tu mejor email..." 
+                            id="email-form" />
                         <label className="Bellota-text-bold">Comentarios</label>  
-                        <textarea name="" id="" className="form-control input-form Bellota-text" placeholder="¿Cómo podríamos satisfacer tus deseos?"></textarea> 
-                        <input type="submit" className="btn btn-rosa mt-3 form-control border-0 Bellota-text" value="Enviar"/>   
+                        <textarea 
+                            name="" 
+                            id="" 
+                            className="form-control input-form Bellota-text" 
+                            placeholder="¿Cómo podríamos satisfacer tus deseos?">
+                        </textarea> 
+                        <input 
+                            type="submit" 
+                            className="btn btn-rosa mt-3 form-control border-0 Bellota-text" 
+                            value="Enviar"/>   
                                         
                     </form>
                 </div>

@@ -6,14 +6,36 @@ import { Fragment, useState, useEffect } from 'react';
 import productosDB from "../../../database/db";
 /* import productosDB from "../../../database/db.json"; */
 import spinner from "../../../assets/images/spinner.gif";
+import {getFirestore} from '../../../database/index';
+
 
 
 const Home = ({carritoCompra, setCarritoCompra}) => {
 
     const [productos, setProductos] =useState([]);
+    const [itemsDB, setItemsDB]= useState([]);
+    
+    const db = getFirestore();
 
+    console.log(db);
 
     /*  console.log(JSON.stringify(productosDB)); */
+ /*  const getProductsFromDB=()=> {
+    db.collection('productos').get()
+    .then(docs=> {
+      let arr=[];
+      docs.forEach(doc=>{        
+        arr.push({id: doc.id, data: doc.data()})
+      })
+      setItemsDB(arr);
+    })
+    .catch(e=>console.log(e))
+  }
+
+  useEffect(()=>{
+    getProductsFromDB();
+  }) */
+
 
   const getProductos = new Promise ((resolve,reject)=>{
     const productos_destacados = productosDB.filter(item=> {
@@ -26,9 +48,9 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
     }, 1000)
   })
 
-/*     getProductos
-    .then(rta=>setProductos(rta))
-    .catch(error=>console.log(error)); */
+   // getProductos
+    // .then(rta=>setProductos(rta))
+    // .catch(error=>console.log(error));
 
   useEffect(() => {
     getProductos.then(rta=>setProductos(rta))

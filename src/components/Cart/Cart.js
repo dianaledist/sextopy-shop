@@ -15,19 +15,38 @@ const CartContainer = () => {
     const [data, setData]= useContext(Store);
     const [productos, setProductos] =useState([]);
     const [contador, setContador]= useState(1);
+    const [prods, setProds]= useState([]);
 
     const getProductos = new Promise ((resolve,reject)=>{
       setTimeout(() => {
         resolve(data);
       }, 1000)
     })
+
     useEffect(() => {
+        if(data.items.length){
+            const productos=JSON.stringify(data.items);
+            localStorage.setItem('productos', productos);
+        }
+
+        if(localStorage.getItem('productos')) {
+            console.log(JSON.parse(localStorage.getItem('productos')))
+            setProds(JSON.parse(localStorage.getItem('productos')));
+        } else {
+            setProds(data.items);
+        }
+  
+      }, [data.items])
+
+
+   /*  useEffect(() => {
       getProductos.then(rta=>setProductos(rta));
 
-    }, [])
+    }, []) */
+
+
 
     console.log(productos)
-    console.log(productos.itemsQuantity)
 
     function onRemove(){
         console.log('hola');
@@ -51,7 +70,8 @@ const CartContainer = () => {
                 data.items.length ?
                 data.items.map((items,index)=>
                 <>
-                <CartTable key={items.id} id={items.id} url={items.url} nombre={items.nombre} precio={items.precio}/>
+                <CartTable items={items} key={items.id} id={items.id} url={items.url} nombre={items.nombre} precio={items.precio} cantidad={items.quantity}/>
+                
                 
                 </>
                 )
@@ -60,12 +80,14 @@ const CartContainer = () => {
                 <th><p className="loading ">Tu cesta está vacía 💜 </p></th>
 {/*                 <img src={spinner} alt="loading"/> */}
                 </>
+                
             
             }
+          
                 
             </thead>
         </table>
-            
+        <h2 className="text-right">Total: € {data.precioTotal } </h2>
     </div>
     </>
     );
