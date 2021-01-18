@@ -13,7 +13,7 @@ import CartTable from './CartTable/CartTable';
 const CartContainer = () => {
   
     const [data, setData]= useContext(Store);
-    const [productos, setProductos] =useState([]);
+    /* const [productos, setProductos] =useState([]); */
     const [contador, setContador]= useState(1);
     const [prods, setProds]= useState([]);
 
@@ -39,23 +39,6 @@ const CartContainer = () => {
       }, [data.items])
 
 
-   /*  useEffect(() => {
-      getProductos.then(rta=>setProductos(rta));
-
-    }, []) */
-
-
-
-    console.log(productos)
-
-    function onRemove(){
-        console.log('hola');
-        console.log(data.items[0]);
-    }
-/*     const onRemove = () => {	
-        console.log('hola');
-    }
- */
     return ( 
     <>
     <div className="container pt-3 pb-3">
@@ -70,7 +53,15 @@ const CartContainer = () => {
                 data.items.length ?
                 data.items.map((items,index)=>
                 <>
-                <CartTable items={items} key={items.id} id={items.id} url={items.url} nombre={items.nombre} precio={items.precio} cantidad={items.quantity}/>
+                <CartTable 
+                    items={items} 
+                    key={items.id} 
+                    id={items.id} 
+                    url={items.url} 
+                    nombre={items.nombre} 
+                    precio={items.precio} 
+                    cantidad={items.quantity}
+                />
                 
                 
                 </>
@@ -88,6 +79,9 @@ const CartContainer = () => {
             </thead>
         </table>
         <h2 className="text-right">Total: € {data.precioTotal } </h2>
+        <div className="text-right">
+        <button className="btn boton-compra text-white btn-lg text-uppercase mt-3" /* onClick={ () => onAdd(id)} */>FINALIZAR COMPRA</button>
+        </div>
     </div>
     </>
     );

@@ -1,0 +1,23 @@
+.cartlist {
+    position: relative;
+}
+
+.cartlist-img {
+    max-width: 40px;
+}
+
+.cartlist-cantidad {
+    background-color: #b41039c5;
+    border-radius: 50%;
+    width: 15px;
+    text-align: center;
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    right:0;
+    top: -5px;
+}
+.cartlist-texto {
+    max-width: 200px;
+}
+

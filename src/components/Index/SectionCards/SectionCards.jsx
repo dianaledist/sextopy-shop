@@ -5,9 +5,11 @@ import {Link, useParams, Redirect} from 'react-router-dom';
 import Swal from 'sweetalert2';
 import {Store} from '../../../store';
 
-const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idproducto, props}) => {
+/* import {hola } from '../../../../public/products' */
 
-    const {url, nombre, descripcion, precio, stock} = producto;
+const SectionCards = ({producto, url, nombre, descripcion, precio, stock, productos, carritoCompra, setCarritoCompra, idproducto, cantidad}) => {
+
+/*     const {url, nombre, descripcion, precio, stock} = producto; */
     const {id} = useParams();
     const [data, setData]= useContext(Store);
 
@@ -30,42 +32,19 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
         if (existingProduct) {
             //localStorage.setItem('productos_agregados', JSON.stringify(data.items));
             setData({                
-                items: [...data.items],  
-                cantidad: data.cantidad + contador,
-                precioTotal: data.precioTotal + (producto.precio * contador)
+                items: [...data.items], 
+                cantidad: data.cantidad += contador,
+                precioTotal: data.precioTotal += (producto.precio * contador)
             })
-            console.log(setData);
+            console.log(data);
         } else {
             
             setData({
                 items: [ ...data.items, producto ],
                 cantidad: data.cantidad += contador,
-                precioTotal: data.precioTotal + (producto.precio * contador)
+                precioTotal: data.precioTotal += (producto.precio * contador)
                 
             })
-
-    
-
-        /* if (existingProduct) {
-            setData({
-                //itemsQuantity: [...data.itemsQuantity, contador],
-                cantidad: data.cantidad + contador,
-                items: [...data.items, {item: producto, quantity: contador}],  
-                precioTotal: data.precioTotal + (producto.precio * contador)
-            })
-            console.log(setData);
-
-        } else {
-            // existingProduct.cantidad += contador;
-            setData({
-                ...data,
-                items: [ ...data.items, {item: producto, quantity: contador} ],
-                cantidad: data.cantidad + contador,
-                precioTotal: data.precioTotal + (producto.precio * contador)
-            }) */
-       
-            // data.items.quantity+=contador;
-            console.log(data);
         }
             
 
@@ -81,9 +60,8 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
           }, 1000);
     }
 
-    console.log(data)
+/*     console.log(data) */
 
-    console.log(idproducto)
 
     return (
 
@@ -91,7 +69,7 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
             
            <div className="col-12 col-lg-4 mb-4">
             <div className="card-producto text-center animate__animated animate__zoomIn" key={idproducto}>              
-                <img src={url} alt={nombre} className="img-fluid pt-3"/>
+                <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3"/>
                 <div className="info-producto text-center p-4 Bellota-text">
                     <Link to={`/detail/${idproducto}`} className="links">
                         <h3 className="text-center mb-3 Bellota-text-bold">{nombre}</h3>
@@ -99,15 +77,21 @@ const SectionCards = ({producto, productos, carritoCompra, setCarritoCompra, idp
                     <p>{descripcion}</p>
                     <p className="precio font-weight-bold">$ {precio*contador}</p>
                     <div className="container">
-                    <Contador
+                    {/* <Contador
                     key={idproducto}
                     contador={contador}
                     setContador={setContador}
                     stock={stock}
                     id={idproducto}
-                    />
+                    cantidad={contador}
+
+                    /> */}
                     </div>
-                    <button className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => onAdd(id)}>Agregar al Carrito</button>
+                    <Link to={`/detail/${idproducto}`} className="links">
+                    <button className="btn color-primario text-white btn-lg text-uppercase mt-3" /* onClick={ () => onAdd(id)} */>ver info</button>
+                    </Link>
+
+                    
                     {/* { redirect && <Redirect to="/cart"/> } */}
                 </div>
             </div>

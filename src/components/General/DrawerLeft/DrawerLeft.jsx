@@ -45,16 +45,16 @@ export default function TemporaryDrawer() {
         ruta: '/',
     },
     {
-        texto: 'Ropa íntima',
-        ruta: '/category/ropa-intima',
+        texto: 'Ropa cool',
+        ruta: '/category/ropa-cool',
     },
     {
         texto: 'Accesorios',
         ruta: '/category/accesorios',
     },
     {
-        texto: 'Juguetes eróticos',
-        ruta: '/category/juguetes-eroticos',
+        texto: 'Juguetes y etc',
+        ruta: '/category/juguetes-y-etc',
     },
     {
         texto: 'Novedades',
