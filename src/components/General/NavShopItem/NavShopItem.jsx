@@ -7,7 +7,7 @@ const NavShopItem = () => {
     console.log(data);
 
     return ( 
-        <div className="icons shop_image">                            
+        <div className="icons shop_image" key={data.cantidad}>                            
             <span className="shop_cantidad d-flex justify-content-center pt-2">{data.cantidad}</span>
         </div>  
      );

@@ -119,7 +119,7 @@ export default function TemporaryDrawer() {
                         key={item.id} 
                         item={item} 
                         id={item.id}     
-                        qty={item.quantity}                    
+                        cantidad={item.quantity}                    
                         />
                       
                         
@@ -130,7 +130,7 @@ export default function TemporaryDrawer() {
                       }
                       </div>                      
                         {/* <p>Precio Total: {data.precioTotal}</p> */}
-                        <button className="btn color-primario text-uppercase mt-3 Bellota-text" ><Link to='/cart' className="text-white">Ver Carrito</Link></button>
+                        <button className="btn color-primario text-uppercase mt-3 Bellota-text" ><Link to='/cart' className="text-white" onClick={toggleDrawerRight(anchor, false)} >Ver Carrito</Link></button>
                         <button className="btn btn-secondary text-white Bellota-text text-uppercase mt-3" onClick={ () => onDelete()}>Vaciar</button>
                         
                         <div className="text-center">🖤 </div>

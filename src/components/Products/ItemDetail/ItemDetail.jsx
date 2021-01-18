@@ -8,16 +8,15 @@ import Swal from 'sweetalert2';
 import {Store} from '../../../store';
 
 
-const ItemDetail = ({item, cantidad}) => {
-    const {id, url, nombre, descripcion, cttas, precio, stock} = item;
+const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, cantidad}) => {
+
     const [data, setData]= useContext(Store);
 
     const [contador, setContador]= useState(1);
     const [redirect, setRedirect] = useState(false);
     const [confirmMessage, setConfirmMessage] = useState("")
 
-
-    const onAdd = () => {	
+    const onAdd = (id) => {	
 
         const existingProduct=data.items.find((prod) => prod.id === id);
         console.log(existingProduct)
@@ -32,10 +31,10 @@ const ItemDetail = ({item, cantidad}) => {
             //localStorage.setItem('productos_agregados', JSON.stringify(data.items));
             setData({                
                 items: [...data.items],  
-                cantidad: data.cantidad + contador,
+                cantidad: data.cantidad += contador,
                 precioTotal: data.precioTotal + (item.precio * contador)
             })
-            console.log(setData);
+            console.log(data);
         } else {
             
             setData({
@@ -127,12 +126,12 @@ const ItemDetail = ({item, cantidad}) => {
 
     return ( 
         <>
-        <div className="container contenedor p-5 mb-5 animate__animated animate__zoomIn">
+        <div className="container contenedor p-5 mb-5 animate__animated animate__zoomIn" >
             <Link to="/" className="links"><ArrowBackIcon /></Link>
             <div className="row text-center align-items-center">
                 <div className="col-12 col-md-6">
                     <div className="overlay">
-                        <img src={url} alt={nombre} className="img-fluid img-transform"/>
+                        <img src={`../../../products/${url}`} alt={nombre} className="img-fluid img-transform"/>
                     </div>
                 </div>
                 <div className="col-12 col-md-6">
