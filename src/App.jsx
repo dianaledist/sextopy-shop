@@ -11,6 +11,7 @@ import Error404 from './components/General/Error404/index';
 import Category from './components/General/Category/Category';
 import ItemDetailContainer from './components/Products/ItemDetailContainer/ItemDetailContainer';
 import CartContainer from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
 import {Store} from './store';
 
 
@@ -46,10 +47,14 @@ function App() {
         </Route>
         <Route exact path="/category/:category_name">
           <Category/>
-        </Route>        
+        </Route> 
+        <Route path="/checkout">
+          <Checkout/>
+        </Route>       
         <Route path="*">
           <Error404 />
         </Route>
+        
       </Switch>
 
       <Formulario 

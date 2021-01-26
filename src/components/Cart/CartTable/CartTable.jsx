@@ -3,7 +3,7 @@ import Contador from '../../utils/Contador';
 import {Store} from '../../../store';
 import FinalCounter from '../../utils/FinalCounter/FinalCounter';
 
-const CartTable = ({key, url, nombre, precio, id, cantidad, items}) => {
+const CartTable = ({key, url, nombre, precio, id, cantidad, stock, items, item}) => {
     const [contador, setContador]= useState(cantidad);
     const [data, setData]= useContext(Store);
 
@@ -15,20 +15,50 @@ console.log(contador)
 
     function onRemove(){
         console.log(`removiendo ${id}`);
-        const find = data.items.find((prod) => prod.id === id);
+        const find = data.items.find((prod) => prod.id == id);
         const filter = data.items.filter((prod) => prod.id !== id);
-/*         console.log(data.precioTotal);
-        console.log(find);
-        console.log(find.precio);
-        console.log(find.quantity);
         console.log(filter);
- */
+        
         setData({ 
             ...data, 
             items: filter,
             cantidad: data.cantidad-cantidad,
             precioTotal: data.precioTotal - (find.precio*find.quantity)
         });
+        setContador(contador-data.cantidad)
+
+        const productos=JSON.stringify([data.items, data.cantidad, data.precioTotal]);
+        localStorage.setItem('productos', productos);
+
+        item.quantity=0;
+        if(data.items.length===1){
+            console.log(data.items.quantity)
+            console.log("hola data cantidad 1")
+            setData({
+                items: [],
+                cantidad: 0,
+                precioTotal: 0,
+            })
+            localStorage.clear();
+        } 
+
+
+       /*  console.log(`removiendo ${id}`);
+        const find = data.items.find((prod) => prod.id === id);
+        const filter = data.items.filter((prod) => prod.id !== id);
+
+        console.log(data.precioTotal);
+        console.log(find);
+        console.log(find.precio);
+        console.log(find.quantity);
+        console.log(filter);
+
+        setData({ 
+            ...data, 
+            items: filter,
+            cantidad: data.cantidad-cantidad,
+            precioTotal: data.precioTotal - (find.precio*find.quantity)
+        }); */
 
     }   
 
@@ -36,7 +66,7 @@ console.log(contador)
 
     return (
         <>
-        <tr key={id}>
+        <tr key={id} className="text-center">
 
                     <th>
                     <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3" width="50%"/>
@@ -46,18 +76,19 @@ console.log(contador)
                     </th>
                     <th>
                         <FinalCounter
-                        key={items.id}
+                        key={id}
+                        item={item}
                         items={items}
                         contador={contador}
                         setContador={setContador}
                         cantidad={cantidad}
-                        stock={items.stock}
+                        stock={item.stock}
                         setPrecioProducto={setPrecioProducto}
-                        precioProducto={items.precio}
+                        precio={precio}
                         />
                     </th>
                     <th>
-                        <p>€{precio*items.quantity}</p>
+                        <p>$ {precio*contador}</p>
                     </th>
                     <th>
                     <button className="btn color-primario text-white btn-lg text-uppercase" onClick={ () => onRemove(id)}>BORRAR</button>

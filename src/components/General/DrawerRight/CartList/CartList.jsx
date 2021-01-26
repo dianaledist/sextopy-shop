@@ -13,6 +13,7 @@ const CartList = ({item,id, cantidad}) => {
         const find = data.items.find((prod) => prod.id == id);
         const filter = data.items.filter((prod) => prod.id !== id);
         console.log(filter);
+        
         setData({ 
             ...data, 
             items: filter,
@@ -21,8 +22,25 @@ const CartList = ({item,id, cantidad}) => {
         });
         setQtyParcial(qtyParcial-data.cantidad)
 
+        const productos=JSON.stringify([data.items, data.cantidad, data.precioTotal]);
+        localStorage.setItem('productos', productos);
+
+        item.quantity=0;
+        if(data.items.length===1){
+            console.log(data.items.quantity)
+            console.log("hola data cantidad 1")
+            setData({
+                items: [],
+                cantidad: 0,
+                precioTotal: 0,
+            })
+            localStorage.clear();
+        } 
     }
 
+    
+
+    console.log(data.cantidad)
     console.log(data.items.length)
 
     return (
@@ -30,7 +48,8 @@ const CartList = ({item,id, cantidad}) => {
     <div className="d-flex align-items-center justify-content-start my-3" >
         <div className="cartlist">
             <p className="mb-0 cartlist-cantidad"> {qtyParcial}</p>
-            <img src={`../../../products/${item.url}`} alt={item.nombre} className="img-fluid cartlist-img"/>
+            <img src={item.url} alt={item.nombre} className="img-fluid cartlist-img"/>
+            {/* <img src={`../../../products/${item.url}`} alt={item.nombre} className="img-fluid cartlist-img"/> */}
         </div>
         <div className="cartlist-texto px-2">
             <p className="mb-0">{item.nombre}</p>

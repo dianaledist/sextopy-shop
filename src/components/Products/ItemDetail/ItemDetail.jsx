@@ -18,67 +18,63 @@ const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, c
 
     const onAdd = (id) => {	
 
-        const existingProduct=data.items.find((prod) => prod.id === id);
+        const existingProduct=data.items.find((prod) => prod.id == id);
         console.log(existingProduct)
 
-        //data.items.quantity= data.items.quantity+=contador;
-        item.quantity=item.quantity+=contador;
-
+              
         console.log(data.items);
-        console.log(cantidad);    
-
+        console.log(data.cantidad);    
+        
+      
         if (existingProduct) {
+            
+            if(item.quantity>=stock) {
+                alert("cantidad mayor a stock")
+            } else {
+                item.quantity=item.quantity+=contador;  
+            //existingProduct.quantity= existingProduct.quantity+=contador;
             //localStorage.setItem('productos_agregados', JSON.stringify(data.items));
-            setData({                
+            setData({     
                 items: [...data.items],  
                 cantidad: data.cantidad += contador,
                 precioTotal: data.precioTotal + (item.precio * contador)
             })
+            setConfirmMessage(Swal.fire({
+                title: `Has agregado ${contador} items al carrito `,
+                icon: 'success',
+                width: 600,
+                padding: '3em',
+              }))
+    
+              setTimeout(() => {
+                setRedirect(true);
+              }, 1000);
+            }
             console.log(data);
         } else {
-            
+            item.quantity=item.quantity+=contador; 
             setData({
                 items: [ ...data.items, item ],
                 cantidad: data.cantidad += contador,
                 precioTotal: data.precioTotal + (item.precio * contador)
                 
             })
-
+            setConfirmMessage(Swal.fire({
+                title: `Has agregado ${contador} items al carrito `,
+                icon: 'success',
+                width: 600,
+                padding: '3em',
+              }))
     
+              setTimeout(() => {
+                setRedirect(true);
+              }, 1000);
 
-        /* if (existingProduct) {
-            setData({
-                //itemsQuantity: [...data.itemsQuantity, contador],
-                cantidad: data.cantidad + contador,
-                items: [...data.items, {item: producto, quantity: contador}],  
-                precioTotal: data.precioTotal + (producto.precio * contador)
-            })
-            console.log(setData);
-
-        } else {
-            // existingProduct.cantidad += contador;
-            setData({
-                ...data,
-                items: [ ...data.items, {item: producto, quantity: contador} ],
-                cantidad: data.cantidad + contador,
-                precioTotal: data.precioTotal + (producto.precio * contador)
-            }) */
-       
-            // data.items.quantity+=contador;
             console.log(data);
         }
             
 
-        setConfirmMessage(Swal.fire({
-            title: `Has agregado ${contador} items al carrito `,
-            icon: 'success',
-            width: 600,
-            padding: '3em',
-          }))
-
-          setTimeout(() => {
-            setRedirect(true);
-          }, 1000);
+        
     }
     
 
@@ -131,7 +127,8 @@ const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, c
             <div className="row text-center align-items-center">
                 <div className="col-12 col-md-6">
                     <div className="overlay">
-                        <img src={`../../../products/${url}`} alt={nombre} className="img-fluid img-transform"/>
+                        <img src={url} alt={nombre} className="img-fluid img-transform"/>
+                        {/* <img src={`../../../products/${url}`} alt={nombre} className="img-fluid img-transform"/> */}
                     </div>
                 </div>
                 <div className="col-12 col-md-6">

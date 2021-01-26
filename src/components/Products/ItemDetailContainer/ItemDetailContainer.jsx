@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext }  from 'react';
 import { useParams, Link } from "react-router-dom";
-/* import productosDB from "../../../database/db"; */
+import productosDB from "../../../database/db";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import {Store} from '../../../store/index';
 
@@ -17,8 +17,7 @@ const ItemListContainer = ({producto, key, idProducto}) => {
 
     const db = getFirestore();
 
-    /*  console.log(JSON.stringify(productosDB)); */
-    useEffect(() => {
+/*     useEffect(() => {
       db.collection('productos').doc(id).get()
       .then(doc => {
           if(doc.exists) {
@@ -28,17 +27,17 @@ const ItemListContainer = ({producto, key, idProducto}) => {
       .catch(e => console.log(e));
 
 
-  }, []);
+  }, []); */
 
 
 /*     console.log(data) */
 
 
 
-/*     useEffect(() => {
+    useEffect(() => {
       setTimeout(() => {
         const promise = new Promise((resolve, reject) => {
-          const itemDB = data.items.find(producto=>producto.id==id)
+          const itemDB = productosDB.find(producto=>producto.id==id)
           resolve(itemDB)
 
         });
@@ -46,7 +45,7 @@ const ItemListContainer = ({producto, key, idProducto}) => {
           setItem(itemDB);
         });
       }, [id]);
-    }, 1000); */
+    }, 1000);
 
 
     return (

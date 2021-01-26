@@ -1,11 +1,9 @@
 import React, { Fragment, useState, useContext } from 'react';
 import './SectionCards.scss';
-import Contador from '../../utils/Contador';
 import {Link, useParams, Redirect} from 'react-router-dom';
 import Swal from 'sweetalert2';
 import {Store} from '../../../store';
 
-/* import {hola } from '../../../../public/products' */
 
 const SectionCards = ({producto, url, nombre, descripcion, precio, stock, productos, carritoCompra, setCarritoCompra, idproducto, cantidad}) => {
 
@@ -69,7 +67,9 @@ const SectionCards = ({producto, url, nombre, descripcion, precio, stock, produc
             
            <div className="col-12 col-lg-4 mb-4">
             <div className="card-producto text-center animate__animated animate__zoomIn" key={idproducto}>              
-                <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3"/>
+            <img src={url} alt={nombre} className="img-fluid pt-3"/>
+                
+                {/* <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3"/> */}
                 <div className="info-producto text-center p-4 Bellota-text">
                     <Link to={`/detail/${idproducto}`} className="links">
                         <h3 className="text-center mb-3 Bellota-text-bold">{nombre}</h3>

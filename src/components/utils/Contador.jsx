@@ -18,13 +18,7 @@ const Contador = ({contador,setContador,id,stock}) => {
         setContador(contador+1)
         }
     }
-/* 
-    function restarProducto(){
-        if(contador>0) {
-        setContador(contador-1)
-        }
-    }
-    console.log({contador,id}); */
+
 
     return (
         <>

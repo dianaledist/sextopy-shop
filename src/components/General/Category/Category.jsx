@@ -1,8 +1,5 @@
 import {useEffect, useState} from 'react';
 import {useParams, Link} from 'react-router-dom';
-import Home from '../../Index/Home/Home';
-/* import productosDB from "../../../database/db"; */
-/* import spinner from "../../../assets/images/spinner.gif"; */
 import SectionCards from '../../Index/SectionCards/SectionCards';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {getFirestore} from '../../../database/index';
@@ -13,7 +10,6 @@ const Category = () => {
     const [productos, setProductos] =useState([]);
 
     const {category_name} = useParams();
-
 
     const db = getFirestore();
 
@@ -30,37 +26,6 @@ const Category = () => {
             })
         }
     }, [category_name])
-
-  
-/*   const getProductos = new Promise ((resolve,reject)=>{
-    const productos_categoria = productosDB.filter(item=> {
-      return item.categoria===category_name
-    })
-
-    setTimeout(() => {
-      resolve(productos_categoria)
-    }, 500)
-  })
-
-  const getProducstFromDB = async () => {
-    try {
-        const result = await getProductos;
-        setProductos(result);
-    } catch(error) {
-        alert("No podemos mostrar los productos en este momento");
-    }
-}
-
-console.log(productos)
-
-  useEffect(() => {
-    console.log(category_name);
-    getProducstFromDB();
-}, [category_name]) */
-
-
-
-
 
     return (
         <>

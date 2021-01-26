@@ -1,0 +1,46 @@
+#PaymentForm {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50%;
+	width: 100%;
+	background: #ff512f; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#dd2476,
+		#ff512f
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #dd2476, #ff512f);
+}
+
+#PaymentForm {
+	width: 450px;
+	display: flex;
+	height: 70vh;
+	justify-content: space-around;
+	flex-direction: column;
+	background: #ffff;
+	border-radius: 10px;
+}
+
+.checkout-form {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.input-form {
+	background: #f9f9f9;
+	padding: 10px;
+	width: 100%;
+	border: none;
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: rgb(0, 0, 0);
+	outline: none;
+	font-weight: 300;
+}
+
+.rccs__card--unknown > div {
+	background: #75c9a5;
+}

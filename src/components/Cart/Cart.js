@@ -51,16 +51,17 @@ const CartContainer = () => {
             <thead>
             {
                 data.items.length ?
-                data.items.map((items,index)=>
+                data.items.map((item,index)=>
                 <>
                 <CartTable 
-                    items={items} 
-                    key={items.id} 
-                    id={items.id} 
-                    url={items.url} 
-                    nombre={items.nombre} 
-                    precio={items.precio} 
-                    cantidad={items.quantity}
+                    items={data.items} 
+                    item={item}
+                    key={item.id} 
+                    id={item.id} 
+                    url={item.url} 
+                    nombre={item.nombre} 
+                    precio={item.precio} 
+                    cantidad={item.quantity}
                 />
                 
                 
@@ -70,17 +71,19 @@ const CartContainer = () => {
                 <>
                 <th><p className="loading ">Tu cesta está vacía 💜 </p></th>
 {/*                 <img src={spinner} alt="loading"/> */}
-                </>
-                
-            
+                </>                      
             }
           
                 
             </thead>
         </table>
-        <h2 className="text-right">Total: € {data.precioTotal } </h2>
+        <h2 className="text-right">Total: $ {data.precioTotal } </h2>
         <div className="text-right">
-        <button className="btn boton-compra text-white btn-lg text-uppercase mt-3" /* onClick={ () => onAdd(id)} */>FINALIZAR COMPRA</button>
+ 
+        <Link to={`/checkout`} className="links"><button 
+        disabled={data.items.length ? null : 'disabled' } 
+        className="btn boton-compra text-white btn-lg text-uppercase mt-3">FINALIZAR COMPRA</button></Link>
+
         </div>
     </div>
     </>
