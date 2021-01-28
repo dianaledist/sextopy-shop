@@ -25,7 +25,7 @@ const CartContainer = () => {
 
     useEffect(() => {
         if(data.items.length){
-            const productos=JSON.stringify(data.items);
+            const productos=JSON.stringify([data.items, data.cantidad, data.precioTotal]);
             localStorage.setItem('productos', productos);
         }
 

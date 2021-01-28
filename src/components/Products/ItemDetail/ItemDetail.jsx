@@ -25,15 +25,15 @@ const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, c
         console.log(data.items);
         console.log(data.cantidad);    
         
-      
+         /* item.quantity=item.quantity+=contador;   */
         if (existingProduct) {
             
             if(item.quantity>=stock) {
                 alert("cantidad mayor a stock")
             } else {
-                item.quantity=item.quantity+=contador;  
+               existingProduct.quantity=existingProduct.quantity+=contador;
             //existingProduct.quantity= existingProduct.quantity+=contador;
-            //localStorage.setItem('productos_agregados', JSON.stringify(data.items));
+           // localStorage.setItem('productos', JSON.stringify([data.items, data.cantidad, data.precioTotal]));
             setData({     
                 items: [...data.items],  
                 cantidad: data.cantidad += contador,

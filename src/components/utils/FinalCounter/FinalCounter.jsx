@@ -38,9 +38,7 @@ const FinalCounter = ({items, item, key, contador,setContador,cantidad,id, stock
                 cantidad: data.cantidad +1,
                 precioTotal: data.precioTotal + precio
             })
-        } else {
-            alert("la que queda")
-        }
+        } 
 
         /* if(contador<stock) {
             setContador(contador+1)

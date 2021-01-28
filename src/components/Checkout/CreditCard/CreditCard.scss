@@ -14,19 +14,13 @@
 }
 
 #PaymentForm {
-	width: 450px;
+	width: auto;
 	display: flex;
-	height: 70vh;
+	height: auto;
 	justify-content: space-around;
 	flex-direction: column;
 	background: #ffff;
 	border-radius: 10px;
-}
-
-.checkout-form {
-	width: 80%;
-	margin: 0 auto;
-	margin-top: 20px;
 }
 
 .input-form {
@@ -39,6 +33,10 @@
 	color: rgb(0, 0, 0);
 	outline: none;
 	font-weight: 300;
+}
+
+.rcss {
+	margin:0;
 }
 
 .rccs__card--unknown > div {

@@ -16,50 +16,6 @@ const SectionCards = ({producto, url, nombre, descripcion, precio, stock, produc
     const [redirect, setRedirect] = useState(false);
     const [confirmMessage, setConfirmMessage] = useState("")
 
-    const onAdd = () => {	
-
-        const existingProduct=data.items.find((prod) => prod.id === idproducto);
-        console.log(existingProduct)
-
-        //data.items.quantity= data.items.quantity+=contador;
-        producto.quantity=producto.quantity+=contador;
-
-        console.log(data.items);
-        console.log(producto.quantity);    
-
-        if (existingProduct) {
-            //localStorage.setItem('productos_agregados', JSON.stringify(data.items));
-            setData({                
-                items: [...data.items], 
-                cantidad: data.cantidad += contador,
-                precioTotal: data.precioTotal += (producto.precio * contador)
-            })
-            console.log(data);
-        } else {
-            
-            setData({
-                items: [ ...data.items, producto ],
-                cantidad: data.cantidad += contador,
-                precioTotal: data.precioTotal += (producto.precio * contador)
-                
-            })
-        }
-            
-
-        setConfirmMessage(Swal.fire({
-            title: `Has agregado ${contador} items al carrito `,
-            icon: 'success',
-            width: 600,
-            padding: '3em',
-          }))
-
-          setTimeout(() => {
-            setRedirect(true);
-          }, 1000);
-    }
-
-/*     console.log(data) */
-
 
     return (
 
@@ -88,7 +44,7 @@ const SectionCards = ({producto, url, nombre, descripcion, precio, stock, produc
                     /> */}
                     </div>
                     <Link to={`/detail/${idproducto}`} className="links">
-                    <button className="btn color-primario text-white btn-lg text-uppercase mt-3" /* onClick={ () => onAdd(id)} */>ver info</button>
+                    <button className="btn color-primario text-white btn-lg text-uppercase mt-3">ver info</button>
                     </Link>
 
                     

@@ -4,6 +4,7 @@ import SectionCards from '../../Index/SectionCards/SectionCards';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {getFirestore} from '../../../database/index';
 import './Category.scss';
+import productosDB from "../../../database/db";
 
 
 const Category = () => {
@@ -11,6 +12,33 @@ const Category = () => {
 
     const {category_name} = useParams();
 
+    const getProductos = new Promise ((resolve,reject)=>{
+        const productos_categoria = productosDB.filter(item=> {
+          return item.categoria===category_name
+        })
+    
+        setTimeout(() => {
+          resolve(productos_categoria)
+        }, 500)
+      })
+    
+      const getProducstFromDB = async () => {
+        try {
+            const result = await getProductos;
+            setProductos(result);
+        } catch(error) {
+            alert("No podemos mostrar los productos en este momento");
+        }
+    }
+    
+    console.log(productos)
+    
+      useEffect(() => {
+        getProducstFromDB();
+    }, [category_name])
+
+
+    /* 
     const db = getFirestore();
 
     useEffect(() => {
@@ -25,7 +53,25 @@ const Category = () => {
                 setProductos(arr);
             })
         }
-    }, [category_name])
+    }, [category_name]) 
+    
+    
+    
+    <SectionCards 
+        productos={productos}
+        key={producto.data.id}
+        idproducto={producto.data.id}
+        producto={producto.data}   
+        url={producto.data.url}  
+        nombre={producto.data.nombre}  
+        descripcion={producto.data.descripcion}  
+        precio={producto.data.precio}  
+        stock={producto.data.stock}  
+    
+    /> 
+    
+    
+    */
 
     return (
         <>
@@ -40,14 +86,14 @@ const Category = () => {
                 {productos.map((producto, index) => (
                     <SectionCards 
                     productos={productos}
-                    key={producto.data.id}
-                    idproducto={producto.data.id}
-                    producto={producto.data}   
-                    url={producto.data.url}  
-                    nombre={producto.data.nombre}  
-                    descripcion={producto.data.descripcion}  
-                    precio={producto.data.precio}  
-                    stock={producto.data.stock}  
+                    key={producto.id}
+                    idproducto={producto.id}
+                    producto={producto}   
+                    url={producto.url}  
+                    nombre={producto.nombre}  
+                    descripcion={producto.descripcion}  
+                    precio={producto.precio}  
+                    stock={producto.stock}  
                     
                     /> 
                 ))} 

@@ -5,7 +5,7 @@ import productxmas3 from "../assets/images/productxmas3.jpg";
 const productosDB = [
     { 
         id: 1, 
-        categoria: 'ropa-intima',
+        categoria: 'ropa-cool',
         nombre: 'Tanga xmas', 
         url:productxmas1, 
         descripcion:'El regalo más original para empezar el año con la mejor suerte', 
@@ -17,7 +17,7 @@ const productosDB = [
     },
     { 
         id: 2, 
-        categoria: 'ropa-intima',
+        categoria: 'ropa-cool',
         nombre: 'Conjunto ho ho ho!', 
         url:productxmas2,  
         descripcion:'Cuerpos divinos divinos para preparanos post-cena', 
@@ -29,7 +29,7 @@ const productosDB = [
     },
     { 
         id: 3, 
-        categoria: 'ropa-intima',
+        categoria: 'ropa-cool',
         nombre: 'Calzón navideño', 
         url:productxmas3, 
         descripcion:'Una manera diferente para tu visita de Papá Noel', 
@@ -65,7 +65,7 @@ const productosDB = [
     },
     { 
         id: 6, 
-        categoria: 'juguetes-eroticos',
+        categoria: 'juguetes-y-etc',
         nombre: 'Lubricante', 
         url:productxmas3, 
         descripcion:'Una manera diferente para tu visita de Papá Noel', 

@@ -1,4 +1,4 @@
-import React, {Fragment, useContext, useEffect} from 'react';
+import React, {Fragment, useContext, useEffect, useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -28,7 +28,7 @@ export default function TemporaryDrawer() {
 
   });
 
-  const [data, setData]= useContext(Store);
+
 
   const toggleDrawerRight= (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -59,16 +59,32 @@ export default function TemporaryDrawer() {
     localStorage.clear();
   }
 
+    const [data, setData]= useContext(Store);
+
+
+
+ /*  useEffect(() => {
+    if(carritoInicial) {
+      localStorage.setItem('productos', JSON.stringify(productsLS));
+      setData(productsLS);
+    } else {
+      localStorage.setItem('productos', JSON.stringify([]));
+    }
+  }, [productsLS]);
+
+  console.log(data) */
+
   useEffect(() => {
+   
     if(data.items.length){
         const productos=JSON.stringify([data.items, data.cantidad, data.precioTotal]);
         localStorage.setItem('productos', productos);
     }
-  }, [data.items])
+  }, [data.items]);
 
-/*   console.log(localStorage.getItem('productos')) */
+/*   console.log(localStorage.getItem('productos'))
   const productosLS=JSON.parse(localStorage.getItem('productos'))
-  console.log(productosLS)
+  console.log(productosLS) */
 
 
 

@@ -28,7 +28,6 @@ const CartList = ({item,id, cantidad}) => {
         item.quantity=0;
         if(data.items.length===1){
             console.log(data.items.quantity)
-            console.log("hola data cantidad 1")
             setData({
                 items: [],
                 cantidad: 0,
@@ -38,10 +37,10 @@ const CartList = ({item,id, cantidad}) => {
         } 
     }
 
-    
+/*     
 
     console.log(data.cantidad)
-    console.log(data.items.length)
+    console.log(data.items.length) */
 
     return (
     <>
@@ -52,7 +51,7 @@ const CartList = ({item,id, cantidad}) => {
             {/* <img src={`../../../products/${item.url}`} alt={item.nombre} className="img-fluid cartlist-img"/> */}
         </div>
         <div className="cartlist-texto px-2">
-            <p className="mb-0">{item.nombre}</p>
+            <p className="mb-0">{item.nombre} - $ {item.precio}</p>
         </div>
     
     

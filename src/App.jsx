@@ -1,6 +1,6 @@
 import './styles/main.scss';
 import 'bootstrap/dist/css/bootstrap.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Formulario from './components/General/Formulario/Formulario';
 import HomeCarrousel from './components/HomeCarrousel/HomeCarrousel';
@@ -25,6 +25,54 @@ function App() {
       cantidad: 0,
       precioTotal:0 
     })   
+
+
+  let carritoInicial= JSON.parse(localStorage.getItem('productos'));
+
+  const [productsLS, setProductsLS] = useState(carritoInicial);
+/*   console.log(productsLS) */
+
+  useEffect(() => {
+      if (!productsLS) {
+        carritoInicial = [[],0,0];
+        console.log(carritoInicial)
+        console.log("creo carrito inicial")
+        setData(data);
+
+      } else  {
+        console.log("hay algo en el carrito")
+        setData({     
+          items: [...productsLS[0]],  
+          cantidad: productsLS[1],
+          precioTotal: productsLS[2]
+      });
+        console.log(data)
+      }
+    }, [productsLS]);
+
+
+  /* const [dataLS, setDataLS] = useState({
+    items: [...productsLS[0]],
+    cantidad: productsLS[1],
+    precioTotal: productsLS[2]
+  })  
+
+  console.log(dataLS)
+
+  useEffect(() => {
+    if(productsLS.items ) {
+      localStorage.setItem('productos', JSON.stringify(productsLS));
+      setData(productsLS);
+      console.log("hay un carrito inicial ")
+    } else {
+      //localStorage.setItem('productos', JSON.stringify([[],0,0]));
+      setData(data);
+      localStorage.setItem('productos', JSON.stringify(data));
+      console.log("no hay carrito y lo pongo en local")
+    }
+  }, [data.items, data.cantidad, data.precioTotal]);
+
+  console.log(data) */
 
     const fecha= new Date().getFullYear();
     
