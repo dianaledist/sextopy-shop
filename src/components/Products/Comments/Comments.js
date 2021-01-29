@@ -1,22 +1,23 @@
 import React, {useState} from 'react';
 import Swal from 'sweetalert2';
+import './Comments.scss';
 
 const Comments = () => {
- /*    const [formComment, setFormComment] = useState ({
-        name : '',
-        comment:'',
+    const [formComment, setFormComment] = useState ({
+        nombre : '',
+        comentario: '',
 
-    }) */
-    const [comment, setComment] =useState('');
+    })
+    const date = new Date().toISOString().slice(0,10);
     const [totalComment, setTotalComment]=useState([]);
 
     const handleSubmitComment = (e) => {
         e.preventDefault();
-        console.log(comment);
+
         
-        if(comment.length>=10) {
-            setTotalComment([...totalComment,comment]);
-            setComment('');
+        if(formComment.comentario.length>=10 ) {
+            setTotalComment([...totalComment, formComment]);
+            setFormComment({nombre: '', comentario: ''});
             let timerInterval
                 Swal.fire({
                 icon: 'success',
@@ -40,17 +41,13 @@ const Comments = () => {
                     clearInterval(timerInterval)
                 }
                 }).then((result) => {
-                /* Read more about handling dismissals below */
+
                 if (result.dismiss === Swal.DismissReason.timer) {
                     console.log('I was closed by the timer')
                 }
                 })
+                document.querySelector(".form-group").reset();
         } else {
-            /* Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'El comentario debe tener 10 caracteres mínimo!'
-              }) */
               let timerInterval
                 Swal.fire({
                 icon: 'error',
@@ -74,7 +71,6 @@ const Comments = () => {
                     clearInterval(timerInterval)
                 }
                 }).then((result) => {
-                /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
                     console.log('I was closed by the timer')
                 }
@@ -82,35 +78,63 @@ const Comments = () => {
         }      
     }
 
-    const handleChangeComment = (e) => {
-        setComment(e.target.value);
+    const handleChangeForm = (e) => {
+        setFormComment({...formComment, [e.target.name]: e.target.value});
     }
 
 
     return ( 
-    <>
-    <div className="d-flex flex-column">
-    <h1 className="text-left">Comentarios! </h1> 
-    <ul>
-        <li>Muy cómodo, y super divertido jeje </li>
-        {
-            totalComment.map((comment,index)=> 
-            <li key={index}>
-                <p>{comment}</p>
+        <>
+        <div className="w-100 border-top py-5">
+        <p className="text-left h1">Comentarios! </p> 
+        <ul className="list-group list-group-flush">
+            <li className="list-group-item p-3 mt-4">
+                
+                    <div className="d-flex align-items-center">
+                        
+                        <img src='https://i.pravatar.cc/35' alt="avatar" className="img-fluid rounded"/>
+                        <span className="ml-1">Vivaciousgreyhound</span>
+                        <span className="font-weight-bold ml-3"> 2020-12-27</span>
+                    </div>
+                    <div className="mt-2">
+                        
+                        <p className="mt-2 px-2">Muy cómodo, y super divertido jeje</p>
+                    </div>
+                    
+                
+    
             </li>
-            )
-        }
-    </ul>
-    
-    <form onSubmit={handleSubmitComment}>
-{/*         <input type="text" ></input> */}
-        <textarea name="comentario" onChange={handleChangeComment} ></textarea>
-        <input type="submit" value="Enviar comentario"></input>
+
+            {
+                totalComment.map((comentario,index)=> 
+                <li key={index} className="list-group-item p-3 mt-4">
+                    <div className="d-flex align-items-center">
+                        
+                        <img src='https://i.pravatar.cc/35' alt="avatar" className="img-fluid rounded"/>
+                        <span className="ml-1">{comentario.nombre}</span>
+                        <span className="font-weight-bold ml-3"> {date}</span>
+                    </div>
+                    <div className="mt-2">
+                        
+                        <p className="mt-2 px-2">{comentario.comentario}</p>
+                    </div>
+                </li>
+                )
+            }
+        </ul>
+        <div className="w-100 d-flex justify-content-center bg-light p-5">
+            <form onSubmit={handleSubmitComment} className="d-flex flex-column p-3 w-75 bg-white form-group">
+                <p className="text-left h1">Comenta tu experiencia 😻</p>
+                <label>Nombre</label>
+                <input type="text" className="border-0 bg-white" name="nombre" onChange={handleChangeForm}></input>
+                <label className="mt-3">Comentario</label>
+                <textarea className="bg-white border-0" name="comentario" rows="5" onChange={handleChangeForm} ></textarea>
+                <input type="submit" value="Enviar comentario" className="btn color-primario text-white btn-lg text-uppercase mt-3"></input>
+            </form>
+        </div>
+        </div>
+        </>
         
-    </form>
-    </div>
-    </>
-    
     );
 }
  

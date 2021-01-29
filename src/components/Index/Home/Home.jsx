@@ -7,6 +7,7 @@ import productosDB from "../../../database/db";
 /* import productosDB from "../../../database/db.json"; */
 import spinner from "../../../assets/images/spinner.gif";
 import {getFirestore} from '../../../database/index';
+import Categoria from './Categoria';
 
 
 const Home = () => {
@@ -107,8 +108,9 @@ const Home = () => {
             </>
 
           }
-                  
+          <Categoria/>        
           </div>
+          
         </div>
         </Fragment>
      );

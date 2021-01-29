@@ -1,0 +1,16 @@
+input.bg-white{
+    outline: none;
+    background-color: #b91a3f15 !important;
+    &:focus {
+        background-color: #b91a3f0c !important;
+        outline: 2px solid #b91a3f15;
+    }
+}
+textarea.bg-white{
+    outline: none;
+    background-color: #b91a3f15 !important;
+    &:focus {
+        background-color: #b91a3f0c !important;
+        outline: 2px solid #b91a3f15;
+    }
+}

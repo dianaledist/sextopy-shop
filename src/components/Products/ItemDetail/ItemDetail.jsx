@@ -29,7 +29,7 @@ const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, c
         if (existingProduct) {
             
             if(item.quantity>=stock) {
-                alert("cantidad mayor a stock")
+                //console.log("Cantidad mayor a stock")
             } else {
                existingProduct.quantity=existingProduct.quantity+=contador;
             //existingProduct.quantity= existingProduct.quantity+=contador;
