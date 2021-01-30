@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext }  from 'react';
 import { useParams, Link } from "react-router-dom";
-import productosDB from "../../../database/db";
+/* import productosDB from "../../../database/db"; */
 import ItemDetail from "../ItemDetail/ItemDetail";
 import {Store} from '../../../store/index';
 
@@ -9,7 +9,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {getFirestore} from '../../../database/index';
 
 
-const ItemListContainer = ({producto, key, idProducto}) => {
+const ItemListContainer = ({producto, key, idproducto}) => {
 
     const [item, setItem] =useState([]);
     const [data, setData]= useContext(Store);
@@ -17,27 +17,33 @@ const ItemListContainer = ({producto, key, idProducto}) => {
 
     const db = getFirestore();
 
-/*     useEffect(() => {
-      db.collection('productos').doc(id).get()
+
+    useEffect(() => {
+      if(id) {
+        db.collection('productos').doc(id).get()
+
       .then(doc => {
           if(doc.exists) {
               setItem(doc.data());
           }
       })
       .catch(e => console.log(e));
+      }
+      
 
+  }, []);
 
-  }, []); */
+  console.log(item)
 
-
+console.log(id)
 /*     console.log(data) */
 
 
 
-    useEffect(() => {
+/*     useEffect(() => {
       setTimeout(() => {
         const promise = new Promise((resolve, reject) => {
-          const itemDB = productosDB.find(producto=>producto.id==id)
+          const itemDB = data.items.find(producto=>producto.id==id)
           resolve(itemDB)
 
         });
@@ -45,7 +51,7 @@ const ItemListContainer = ({producto, key, idProducto}) => {
           setItem(itemDB);
         });
       }, [id]);
-    }, 1000);
+    }, 1000); */
 
 
     return (

@@ -23,9 +23,9 @@ const SectionCards = ({producto, url, nombre, descripcion, precio, stock, produc
             
            <div className="col-12 col-lg-4 mb-4">
             <div className="card-producto text-center animate__animated animate__zoomIn" key={idproducto}>              
-            <img src={url} alt={nombre} className="img-fluid pt-3"/>
+            {/* <img src={url} alt={nombre} className="img-fluid pt-3"/> */}
                 
-                {/* <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3"/> */}
+                <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3"/>
                 <div className="info-producto text-center p-4 Bellota-text">
                     <Link to={`/detail/${idproducto}`} className="links">
                         <h3 className="text-center mb-3 Bellota-text-bold">{nombre}</h3>
@@ -43,7 +43,7 @@ const SectionCards = ({producto, url, nombre, descripcion, precio, stock, produc
 
                     /> */}
                     </div>
-                    <Link to={`/detail/${idproducto}`} className="links">
+                    <Link to={`/detail/${id}`} className="links">
                     <button className="btn color-primario text-white btn-lg text-uppercase mt-3">ver info</button>
                     </Link>
 

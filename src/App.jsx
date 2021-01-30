@@ -75,14 +75,14 @@ function App() {
   console.log(data) */
 
     const fecha= new Date().getFullYear();
-    
+   
+  
   return (
   <Store.Provider value={[data, setData]}>
     <BrowserRouter>
       <Nav/>
     
       <HomeCarrousel/>
-
       <Switch>
         <Route exact path="/">        
           <Home/>
