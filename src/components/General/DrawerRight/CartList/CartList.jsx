@@ -47,8 +47,8 @@ const CartList = ({item,id, cantidad}) => {
     <div className="d-flex align-items-center justify-content-start my-3" >
         <div className="cartlist">
             <p className="mb-0 cartlist-cantidad"> {qtyParcial}</p>
-            {/* <img src={item.url} alt={item.nombre} className="img-fluid cartlist-img"/> */}
-            <img src={`../../../products/${item.url}`} alt={item.nombre} className="img-fluid cartlist-img"/>
+            <img src={item.url} alt={item.nombre} className="img-fluid cartlist-img"/>
+            {/* <img src={`../../../products/${item.url}`} alt={item.nombre} className="img-fluid cartlist-img"/> */}
         </div>
         <div className="cartlist-texto px-2">
             <p className="mb-0">{item.nombre} - $ {item.precio}</p>

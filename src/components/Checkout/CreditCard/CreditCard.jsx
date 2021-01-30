@@ -3,12 +3,17 @@ import Cards from "react-credit-cards";
 import './CreditCard.scss';
 import "react-credit-cards/lib/styles.scss";
 import {Store} from '../../../store/index';
+import {getFirestore} from '../../../database/index';
+import Swal from 'sweetalert2';
+import {uuid} from 'uuidv4';
 
 
 const CreditCard = () => {
-	const [venta, completoVenta] = useState(false);
+	const db = getFirestore();
 
-	const [data, setData] = useContext(Store)
+	const [data, setData] = useContext(Store);
+
+	const [confirmMessage, setConfirmMessage] = useState("")
 
 	const [formData, setformData] = useState({
 		email: "",
@@ -17,7 +22,8 @@ const CreditCard = () => {
 		number: "",
 		expiry: "",
 		cvc: "",
-		data: data
+		data: data,
+		/* date: firebase.firestore.Timestamp.fromDate(new Date()), */
 	  });
 
 	  const { email, name, tel, number, expiry, cvc} = formData;
@@ -46,11 +52,67 @@ const CreditCard = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		if ([email, name, tel, number, cvc].includes("")) {
-		alert("formulario vacio")
+			let timerInterval
+			Swal.fire({
+			  title: 'Debes completar tus datos 💔 ',
+			  html: 'Me cierro en <b></b> milisegundos.',
+			  timer: 1500,
+			  timerProgressBar: true,
+			  didOpen: () => {
+				Swal.showLoading()
+				timerInterval = setInterval(() => {
+				  const content = Swal.getContent()
+				  if (content) {
+					const b = content.querySelector('b')
+					if (b) {
+					  b.textContent = Swal.getTimerLeft()
+					}
+				  }
+				}, 100)
+			  },
+			  willClose: () => {
+				clearInterval(timerInterval)
+			  }
+			}).then((result) => {
+			  /* Read more about handling dismissals below */
+			  if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer')
+			  }
+			})
 		} else {
-			alert(`compra realizada ${formData.name} $ ${formData.data.precioTotal} - ${formData.email}`)
-			completoVenta(true)
-			console.log(venta)
+			formData.id=uuid();
+			setformData([formData]);
+			Swal.fire({
+				title: `<h5>Gracias ${formData.name}<br> Número de seguimiento: ${formData.id}<br>Vuelve pronto 🥰</h5>`,
+				showClass: {
+				  popup: 'animate__animated animate__fadeInDown'
+				},
+				hideClass: {
+				  popup: 'animate__animated animate__fadeOutUp'
+				}
+			  }).then(function() {
+				window.location = "/";
+			});
+
+			  setData({
+				items: [],
+				cantidad: 0,
+				precioTotal: 0
+			})
+			localStorage.clear();
+
+
+			  /* db.collection('ventas').add(formData)
+				.then(({id}) => {
+					setIdCompra(id);
+					setData({
+						items: [],
+						cantidad: 0,
+						precioTotal: 0,
+					})
+				})
+				.catch(e => console.log(e)); */
+				document.querySelector(".checkout-form").reset();
 		}
 	}
 
@@ -81,30 +143,33 @@ const CreditCard = () => {
 					/>
 					<input
 						className="input-form"	
-						type="number"
+						type="year"
 						name="number"
+						maxlength="16"
 						placeholder="Tarjeta de crédito"
 						onChange={handleInputChange}
 					/>
 					
 					<input
 						className="input-form"
-						type="month"
+						type="year"
 						name="expiry"
-						min="2021-01"
+						maxlength="4"
 						placeholder="yy/mm"
 						onChange={handleInputChange}
 					/>
 					<input
 						className="input-form"
-						type="number"
+						type="day"
 						name="cvc"
 						maxlength="3"
 						placeholder="CVC"
 						onChange={handleInputChange}
 					/>
 					<div className="d-flex justify-content-end pb-5">
-						<button type="submit" className="btn color-primario  text-white btn-lg text-uppercase mt-3 ">ACEPTAR COMPRA</button>
+						<button 
+						disabled={data.items.length ? null : 'disabled' } 
+						type="submit" className="btn color-primario  text-white btn-lg text-uppercase mt-3 ">ACEPTAR COMPRA</button>
 					</div>
 				</form>
 				<div className="col-12 col-md-6 pb-5">

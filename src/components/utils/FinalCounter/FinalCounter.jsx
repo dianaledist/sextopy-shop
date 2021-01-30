@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-/* import './contador.scss'; */
+import './FinalCounter.scss';
 import {Store} from '../../../store';
 
 const FinalCounter = ({items, item, key, contador,setContador,cantidad,id, stock, precio}) => {

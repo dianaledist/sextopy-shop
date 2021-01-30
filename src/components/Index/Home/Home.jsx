@@ -3,7 +3,7 @@ import SectionCards from '../../Index/SectionCards/SectionCards';
 import './Home.scss';
 
 import { Fragment, useState, useEffect } from 'react';
-/* import productosDB from "../../../database/db"; */
+import productosDB from "../../../database/db";
 /* import productosDB from "../../../database/db.json"; */
 import spinner from "../../../assets/images/spinner.gif";
 import {getFirestore} from '../../../database/index';
@@ -16,7 +16,7 @@ const Home = () => {
     const [items, setItems]= useState([]);
   
 
-/*   const getProductos = new Promise ((resolve,reject)=>{
+  const getProductos = new Promise ((resolve,reject)=>{
     const productos_destacados = productosDB.filter(item=> {
       return item.destacado===true
 
@@ -29,10 +29,10 @@ const Home = () => {
 
   useEffect(() => {
     getProductos.then(rta=>setProductos(rta))
-  }, []) */
+  }, [])
 
 
-  const db = getFirestore();  
+  /* const db = getFirestore();  
 
   const getProductsFromDB=()=> {
   db.collection('productos').where("destacado", "==", true).get()
@@ -51,7 +51,7 @@ const Home = () => {
 
 useEffect(()=>{
   getProductsFromDB();
-}) 
+})  */
 
 
 
@@ -128,23 +128,20 @@ productos.length ?
         <div className="container">
           <div className="mt-4 row d-flex justify-content-center">
           {
-            
-            
-
-            items.length ?
+            productos.length ?
             <>
-            {items.map((item, index) => (
+            {productos.map((item, index) => (
                   <SectionCards 
-                  productos={items}
-                  key={item.data.id}
-                  idproducto={item.data.id}
-                  producto={item.data}          
-                  url={item.data.url}
-                  nombre={item.data.nombre}
-                  descripcion={item.data.descripcion}
-                  precio={item.data.precio}
-                  stock={item.data.stock}
-                  cantidad={item.data.quantity}
+                  productos={productos}
+                  key={item.id}
+                  idproducto={item.id}
+                  producto={item}          
+                  url={item.url}
+                  nombre={item.nombre}
+                  descripcion={item.descripcion}
+                  precio={item.precio}
+                  stock={item.stock}
+                  cantidad={item.quantity}
                   
                   /> 
             ))} 

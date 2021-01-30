@@ -42,11 +42,12 @@ const CartContainer = () => {
     return ( 
     <>
     <div className="container pt-3 pb-3">
-        <h2 className="Shrikhand text-center ">Tu carrito de compras</h2>
+        <h2 className="Shrikhand text-center ">Tu carrito Sextopy</h2>
     </div>
     <div className="card-producto container animate__animated animate__zoomIn p-5 mb-5" >
     <Link to="/" className="links"><ArrowBackIcon /></Link>
-        <table className="mx-auto" key={data.items.id}>
+        <h2 className="Bellota-text text-center pb-3">Resumen de compra</h2>
+        <table className="mx-auto" cellpadding="10" key={data.items.id}>
 
             <thead>
             {

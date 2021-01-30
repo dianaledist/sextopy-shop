@@ -2,6 +2,8 @@ import React, {useState, useContext} from 'react';
 import Contador from '../../utils/Contador';
 import {Store} from '../../../store';
 import FinalCounter from '../../utils/FinalCounter/FinalCounter';
+import CancelIcon from '@material-ui/icons/Cancel';
+
 
 const CartTable = ({key, url, nombre, precio, id, cantidad, stock, items, item}) => {
     const [contador, setContador]= useState(cantidad);
@@ -69,12 +71,14 @@ console.log(contador)
         <tr key={id} className="text-center">
 
                     <th>
-                    <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3" width="50%"/>
+
+                    <img src={item.url} alt={item.nombre} className="img-fluid cartlist-img"/>
+                    {/* <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3" width="50%"/> */}
                     </th>
                     <th>
-                    <h3 className="text-center mb-3 Bellota-text-bold">{nombre} - ${precio}</h3>
+                    <h4 className="text-center Bellota-text-bold">{nombre} - ${precio}</h4>
                     </th>
-                    <th>
+                    <th width="160px">
                         <FinalCounter
                         key={id}
                         item={item}
@@ -88,12 +92,17 @@ console.log(contador)
                         />
                     </th>
                     <th>
-                        <p>$ {precio*contador}</p>
+                        $ {precio*contador}
                     </th>
                     <th>
-                    <button className="btn color-primario text-white btn-lg text-uppercase" onClick={ () => onRemove(id)}>BORRAR</button>
+                    <CancelIcon onClick={ () => onRemove(id)}/>
                     </th>
                 </tr> 
+                <tr>
+                    <td colspan="5"><hr></hr></td>
+                    
+                </tr>
+                
 
                
                 </>

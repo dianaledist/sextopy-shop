@@ -127,8 +127,8 @@ const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, c
             <div className="row text-center align-items-center">
                 <div className="col-12 col-md-6">
                     <div className="overlay">
-                        {/* <img src={url} alt={nombre} className="img-fluid img-transform"/> */}
-                        <img src={`../../../products/${url}`} alt={nombre} className="img-fluid img-transform"/>
+                        <img src={url} alt={nombre} className="img-fluid img-transform"/>
+                        {/* <img src={`../../../products/${url}`} alt={nombre} className="img-fluid img-transform"/> */}
                     </div>
                 </div>
                 <div className="col-12 col-md-6">
