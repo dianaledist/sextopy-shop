@@ -1,19 +1,13 @@
 import React, {useEffect, useState, useContext}  from 'react';
 import './Cart.scss';
-/* import productosDB from "../../database/db.json"; */
-import Contador from '../utils/Contador';
 import { Link } from "react-router-dom";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import spinner from "../../assets/images/spinner.gif";
 import {Store} from '../../store';
 import CartTable from './CartTable/CartTable';
-
-
 
 const CartContainer = () => {
   
     const [data, setData]= useContext(Store);
-    /* const [productos, setProductos] =useState([]); */
     const [contador, setContador]= useState(1);
     const [prods, setProds]= useState([]);
 
@@ -30,7 +24,6 @@ const CartContainer = () => {
         }
 
         if(localStorage.getItem('productos')) {
-            console.log(JSON.parse(localStorage.getItem('productos')))
             setProds(JSON.parse(localStorage.getItem('productos')));
         } else {
             setProds(data.items);
@@ -71,11 +64,9 @@ const CartContainer = () => {
                 :
                 <>
                 <th><p className="loading ">Tu cesta está vacía 💜 </p></th>
-{/*                 <img src={spinner} alt="loading"/> */}
                 </>                      
             }
           
-                
             </thead>
         </table>
         <h2 className="text-right">Total: $ {data.precioTotal } </h2>

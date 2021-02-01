@@ -18,6 +18,12 @@
     top: -5px;
 }
 .cartlist-texto {
-    max-width: 200px;
+    max-width: 150px;
+    &-nombre{
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
 }
 

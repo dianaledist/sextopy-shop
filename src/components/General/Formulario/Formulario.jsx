@@ -3,7 +3,7 @@ import './formulario.scss';
 import mouthImage from '../../../assets/images/erotic-mouth.png';
 import Swal from 'sweetalert2';
 
-const Formulario = ({nombre,email}) => {
+const Formulario = () => {
 
     const [formContacto,setFormContacto]= useState({
         nombre: '',
@@ -15,7 +15,6 @@ const Formulario = ({nombre,email}) => {
         e.preventDefault();
 
         if (!formContacto.nombre|| !formContacto.email ) {
-            /* console.log(nombre) */
             let timerInterval
                 Swal.fire({
                 icon: 'error',
@@ -39,7 +38,6 @@ const Formulario = ({nombre,email}) => {
                     clearInterval(timerInterval)
                 }
                 }).then((result) => {
-                /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
                     console.log('I was closed by the timer')
                 }
@@ -47,7 +45,6 @@ const Formulario = ({nombre,email}) => {
 
         } else {
             setFormContacto([formContacto]);
-            /* setFormComment({nombre: '', comentario: ''}); */
             Swal.fire({
                 title: `Gracias ${formContacto.nombre} por escribirnos. Te respondemos en 🖤`,
                 width: 600,
@@ -68,8 +65,6 @@ const Formulario = ({nombre,email}) => {
     const handleChangeForm = (e) => {
         setFormContacto({...formContacto, [e.target.name]: e.target.value});
     }
- 
-console.log(formContacto)
 
     return ( 
         <div className="form_body container-fluid vh-100 d-flex justify-content-center align-items-center">

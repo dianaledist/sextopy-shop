@@ -12,7 +12,7 @@ var db = firebase.firestore();
 var productosDB = [
     { 
         id: 1, 
-        categoria: 'ropa-cool',
+        categoria: 'ropa-intima',
         nombre: 'Corset sensual de piel', 
         url:'productxmas1.jpg', 
         descripcion:'Es una prenda muy sencilla que se ciñe perfectamente a tu figura.', 
@@ -24,7 +24,7 @@ var productosDB = [
     },
     { 
         id: 2, 
-        categoria: 'ropa-cool',
+        categoria: 'ropa-intima',
         nombre: 'Body de Cuello Halter', 
         url: "productxmas2.jpg",  
         descripcion:'Posee un encanto elegante y misterioso.', 
@@ -36,7 +36,7 @@ var productosDB = [
     },
     { 
         id: 3, 
-        categoria: 'ropa-cool',
+        categoria: 'ropa-intima',
         nombre: 'Corset de cuero con hebillas', 
         url:"productxmas3.jpg", 
         descripcion:'Es suave, elástico y cómodo de llevar.', 
@@ -48,7 +48,7 @@ var productosDB = [
     },
     { 
         id: 4, 
-        categoria: 'ropa-cool',
+        categoria: 'ropa-intima',
         nombre: 'Sujetador abierto de encaje', 
         url:"productxmas4.jpg", 
         descripcion:'Diseño exclusivo de división de pezón', 
@@ -205,7 +205,7 @@ var productosDB = [
 ];
 
 productosDB.forEach((obj) => {
-  db.collection("pruebaborrar")
+  db.collection("productos")
     .add({
       id: obj.id,
       categoria: obj.categoria,
@@ -218,8 +218,8 @@ productosDB.forEach((obj) => {
       quantity: obj.quantity,
       destacado: obj.destacado,
     })
-    .then((id) => {
-      console.log("Producto registrado con ID: ", id);
+    .then((docRef) => {
+      console.log("Producto registrado con ID: ", docRef.id);
     })
     .catch((error) => {
       console.error("Error al agregar un documento: ", error);

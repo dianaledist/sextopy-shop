@@ -1,14 +1,12 @@
 import React, {useState, useContext} from 'react';
 import './ItemDetail.scss';
 import Contador from '../../utils/Contador';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import {Link, Redirect} from 'react-router-dom';
 import Comments from '../Comments/Comments';
 import Swal from 'sweetalert2';
 import {Store} from '../../../store';
 
 
-const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, cantidad}) => {
+const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, cantidad, categoria}) => {
 
     const [data, setData]= useContext(Store);
 
@@ -16,114 +14,82 @@ const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, c
     const [redirect, setRedirect] = useState(false);
     const [confirmMessage, setConfirmMessage] = useState("")
 
+    const setAlert = (e)=> {
+        Swal.fire({
+            title: `Has agregado ${contador} items al carrito. Stock disponible: ${item.stock}`,
+            icon: 'success',
+            width: 600,
+            padding: '3em',
+          })
+    }
+
     const onAdd = (id) => {	
 
-        const existingProduct=data.items.find((prod) => prod.id == id);
+        let existingProduct=data.items.find((prod) => prod.id == id);
         console.log(existingProduct)
 
-              
         console.log(data.items);
         console.log(data.cantidad);    
         
-         /* item.quantity=item.quantity+=contador;   */
         if (existingProduct) {
             
-            if(item.quantity>=stock) {
-                //console.log("Cantidad mayor a stock")
+            if(contador>stock) {
+                let timerInterval
+                Swal.fire({
+                title: `Lo sentimos. Stock disponible: ${existingProduct.stock}`,
+                html: 'La ventana se cierra en <b></b> milisegundos',
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                    const content = Swal.getContent()
+                    if (content) {
+                        const b = content.querySelector('b')
+                        if (b) {
+                        b.textContent = Swal.getTimerLeft()
+                        }
+                    }
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+                }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
+                })
             } else {
                existingProduct.quantity=existingProduct.quantity+=contador;
-            //existingProduct.quantity= existingProduct.quantity+=contador;
-           // localStorage.setItem('productos', JSON.stringify([data.items, data.cantidad, data.precioTotal]));
+               console.log(existingProduct.stock)
+               existingProduct.stock=existingProduct.stock-=contador;
             setData({     
                 items: [...data.items],  
                 cantidad: data.cantidad += contador,
                 precioTotal: data.precioTotal + (item.precio * contador)
             })
-            setConfirmMessage(Swal.fire({
-                title: `Has agregado ${contador} items al carrito `,
-                icon: 'success',
-                width: 600,
-                padding: '3em',
-              }))
-    
-              setTimeout(() => {
-                setRedirect(true);
-              }, 1000);
+            setAlert()
             }
             console.log(data);
         } else {
             item.quantity=item.quantity+=contador; 
+            item.stock=item.stock-item.quantity;
             setData({
                 items: [ ...data.items, item ],
                 cantidad: data.cantidad += contador,
-                precioTotal: data.precioTotal + (item.precio * contador)
-                
+                precioTotal: data.precioTotal + (item.precio * contador)    
             })
-            setConfirmMessage(Swal.fire({
-                title: `Has agregado ${contador} items al carrito `,
-                icon: 'success',
-                width: 600,
-                padding: '3em',
-              }))
-    
-              setTimeout(() => {
-                setRedirect(true);
-              }, 1000);
-
+            setAlert()
             console.log(data);
         }
-            
-
-        
     }
     
 
-/*     const onAdd = () => {	
-        setData({
-            ...data, 
-            itemsQuantity: [...data.itemsQuantity, contador],
-            cantidad: data.cantidad + contador,
-            items: [...data.items, item],        
-        })
-        alert(`Agregaste ${qty} productos al carrito`);	
-        setConfirmMessage(Swal.fire({
-            title: `Has agregado ${contador} items al carrito `,
-            icon: 'success',
-            width: 600,
-            padding: '3em',
-          }))
-
-          setTimeout(() => {
-            setRedirect(true);
-          }, 1000);
-    }
-
-    console.log(data) */
-
-
-    /* function onAdd() {
-        setData({
-            ...data, 
-            cantidad: data.cantidad + contador,
-            items: [...data.items, item],        
-        })
-
-        setConfirmMessage(Swal.fire({
-            title: `Has agregado ${contador} items al carrito `,
-            icon: 'success',
-            width: 600,
-            padding: '3em',
-          }))
-
-          setTimeout(() => {
-            setRedirect(true);
-          }, 1000);
-    } */
 
     return ( 
         <>
         <div className="container contenedor p-5 mb-5 animate__animated animate__zoomIn" >
-            <Link to="/" className="links"><ArrowBackIcon /></Link>
             <div className="row text-center align-items-center">
                 <div className="col-12 col-md-6">
                     <div className="overlay">
@@ -145,7 +111,6 @@ const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, c
                     id={id}
                     /></div>
                     <button className="btn color-primario text-white btn-lg text-uppercase mt-3" onClick={ () => onAdd(id)}>Agregar al Carrito</button>
-                    {/* { redirect && <Redirect to="/cart"/> } */}
                 </div>
             </div>  
         </div>

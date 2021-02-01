@@ -1,13 +1,11 @@
 import React, { Fragment, useState, useContext } from 'react';
 import './SectionCards.scss';
-import {Link, useParams, Redirect} from 'react-router-dom';
-import Swal from 'sweetalert2';
+import {Link, useParams} from 'react-router-dom';
 import {Store} from '../../../store';
 
 
 const SectionCards = ({producto, url, nombre, descripcion, precio, stock, productos, carritoCompra, setCarritoCompra, idproducto, cantidad}) => {
 
-/*     const {url, nombre, descripcion, precio, stock} = producto; */
     const {id} = useParams();
     const [data, setData]= useContext(Store);
 
@@ -33,22 +31,10 @@ const SectionCards = ({producto, url, nombre, descripcion, precio, stock, produc
                     <p>{descripcion}</p>
                     <p className="precio font-weight-bold">$ {precio*contador}</p>
                     <div className="container">
-                    {/* <Contador
-                    key={idproducto}
-                    contador={contador}
-                    setContador={setContador}
-                    stock={stock}
-                    id={idproducto}
-                    cantidad={contador}
-
-                    /> */}
                     </div>
                     <Link to={`/detail/${idproducto}`} className="links">
                     <button className="btn color-primario text-white btn-lg text-uppercase mt-3">ver info</button>
                     </Link>
-
-                    
-                    {/* { redirect && <Redirect to="/cart"/> } */}
                 </div>
             </div>
             </div>  

@@ -46,41 +46,47 @@ const CreditCard = () => {
 			...formData,
 			[e.target.name]: e.target.value
 		})
+		
 	};
+
+	const setAlert = ()=> {
+		let timerInterval
+		Swal.fire({
+		  title: 'Revisa tus datos 💔 ',
+		  html: 'Me cierro en <b></b> milisegundos.',
+		  timer: 1500,
+		  timerProgressBar: true,
+		  didOpen: () => {
+			Swal.showLoading()
+			timerInterval = setInterval(() => {
+			  const content = Swal.getContent()
+			  if (content) {
+				const b = content.querySelector('b')
+				if (b) {
+				  b.textContent = Swal.getTimerLeft()
+				}
+			  }
+			}, 100)
+		  },
+		  willClose: () => {
+			clearInterval(timerInterval)
+		  }
+		}).then((result) => {
+		  /* Read more about handling dismissals below */
+		  if (result.dismiss === Swal.DismissReason.timer) {
+			console.log('I was closed by the timer')
+		  }
+		})
+	}
+
 	console.log(formData)
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		if ([email, name, tel, number, cvc].includes("")) {
-			let timerInterval
-			Swal.fire({
-			  title: 'Debes completar tus datos 💔 ',
-			  html: 'Me cierro en <b></b> milisegundos.',
-			  timer: 1500,
-			  timerProgressBar: true,
-			  didOpen: () => {
-				Swal.showLoading()
-				timerInterval = setInterval(() => {
-				  const content = Swal.getContent()
-				  if (content) {
-					const b = content.querySelector('b')
-					if (b) {
-					  b.textContent = Swal.getTimerLeft()
-					}
-				  }
-				}, 100)
-			  },
-			  willClose: () => {
-				clearInterval(timerInterval)
-			  }
-			}).then((result) => {
-			  /* Read more about handling dismissals below */
-			  if (result.dismiss === Swal.DismissReason.timer) {
-				console.log('I was closed by the timer')
-			  }
-			})
-		} else {
-			formData.id=uuid();
+		
+		
+			if(number==number.match(/^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/) || number==number.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)) {
+				formData.id=uuid();
 			setformData([formData]);
 			Swal.fire({
 				title: `<h5>Gracias ${formData.name}<br> Número de seguimiento: ${formData.id}<br>Vuelve pronto 🥰</h5>`,
@@ -90,7 +96,8 @@ const CreditCard = () => {
 				hideClass: {
 				  popup: 'animate__animated animate__fadeOutUp'
 				}
-			  }).then(function() {
+			  })
+			  .then(function() {
 				window.location = "/";
 			});
 
@@ -113,7 +120,10 @@ const CreditCard = () => {
 				})
 				.catch(e => console.log(e)); */
 				document.querySelector(".checkout-form").reset();
-		}
+			} else {
+				setAlert();
+			}
+			
 	}
 
 	return (
@@ -125,6 +135,7 @@ const CreditCard = () => {
 						type="text"
 						name="name"
 						placeholder="Nombre completo"
+						required
 						onChange={handleInputChange}
 					/>
 					<input
@@ -132,37 +143,42 @@ const CreditCard = () => {
 						type="email"
 						name="email"
 						placeholder="E-mail"
+						required
 						onChange={handleInputChange}
 					/>
 					<input
 						className="input-form"	
 						type="tel"
 						name="tel"
+						required
 						placeholder="Teléfono de contacto"
 						onChange={handleInputChange}
 					/>
 					<input
 						className="input-form"	
-						type="year"
+						type="text"
 						name="number"
 						maxlength="16"
-						placeholder="Tarjeta de crédito"
+						required pattern="[0-9]{16}"
+						placeholder="xxxxxxxxxxxxxxxx"
 						onChange={handleInputChange}
 					/>
 					
 					<input
 						className="input-form"
-						type="year"
+						type="text"
 						name="expiry"
 						maxlength="4"
-						placeholder="yy/mm"
+						required pattern="[0-9]{4}"
+						placeholder="mmYY"
 						onChange={handleInputChange}
 					/>
 					<input
 						className="input-form"
-						type="day"
+						type="text"
 						name="cvc"
 						maxlength="3"
+						required pattern="[0-9]{3}"
 						placeholder="CVC"
 						onChange={handleInputChange}
 					/>

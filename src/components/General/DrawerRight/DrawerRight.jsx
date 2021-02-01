@@ -1,4 +1,4 @@
-import React, {Fragment, useContext, useEffect, useState} from 'react';
+import React, {Fragment, useContext, useEffect} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -50,29 +50,8 @@ export default function TemporaryDrawer() {
     </div>
   );
 
-  const onDelete = () => {	
-    setData({
-      items: [],
-      cantidad: 0,
-      precioTotal: 0,
-    })
-    localStorage.clear();
-  }
 
     const [data, setData]= useContext(Store);
-
-
-
- /*  useEffect(() => {
-    if(carritoInicial) {
-      localStorage.setItem('productos', JSON.stringify(productsLS));
-      setData(productsLS);
-    } else {
-      localStorage.setItem('productos', JSON.stringify([]));
-    }
-  }, [productsLS]);
-
-  console.log(data) */
 
   useEffect(() => {
    
@@ -81,11 +60,6 @@ export default function TemporaryDrawer() {
         localStorage.setItem('productos', productos);
     }
   }, [data.items]);
-
-/*   console.log(localStorage.getItem('productos'))
-  const productosLS=JSON.parse(localStorage.getItem('productos'))
-  console.log(productosLS) */
-
 
 
   return (
@@ -116,9 +90,8 @@ export default function TemporaryDrawer() {
                         <p>Cesta vacía</p>
                       }
                       </div>                      
-                        <p className="Bellota-text text-right pr-2">Precio Total: $ {data.precioTotal}</p>
+                        <p className="Bellota-text text-right pr-2 font-weight-bold">Precio Total: $ {data.precioTotal}</p>
                         <button className="btn color-primario text-uppercase mt-3 Bellota-text" ><Link to='/cart' className="text-white" onClick={toggleDrawerRight(anchor, false)} >Ver Carrito</Link></button>
-                        <button className="btn btn-secondary text-white Bellota-text text-uppercase mt-3" onClick={ () => onDelete()}>Vaciar</button>
                         
                         <div className="text-center">🖤 </div>
 

@@ -4,7 +4,6 @@ import './Home.scss';
 
 import { Fragment, useState, useEffect } from 'react';
 import productosDB from "../../../database/db";
-/* import productosDB from "../../../database/db.json"; */
 import spinner from "../../../assets/images/spinner.gif";
 import {getFirestore} from '../../../database/index';
 import Categoria from './Categoria';
@@ -51,7 +50,7 @@ const Home = () => {
 
 useEffect(()=>{
   getProductsFromDB();
-})  */
+}, [])  */
 
 
 
@@ -76,7 +75,7 @@ useEffect(()=>{
 
   useEffect(()=>{
     getProductsFromDB();
-  }) 
+  }, []) 
   
   
           items.length ?

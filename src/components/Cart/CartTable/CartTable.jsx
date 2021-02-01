@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react';
-import Contador from '../../utils/Contador';
 import {Store} from '../../../store';
 import FinalCounter from '../../utils/FinalCounter/FinalCounter';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -9,11 +8,7 @@ const CartTable = ({key, url, nombre, precio, id, cantidad, stock, items, item})
     const [contador, setContador]= useState(cantidad);
     const [data, setData]= useContext(Store);
 
-
     const [precioProducto,setPrecioProducto]= useState(precio);
-/*     const [cantidadProducto,setCantidadProducto]= useState(cantidad) */
-console.log(precioProducto)
-console.log(contador)
 
     function onRemove(){
         console.log(`removiendo ${id}`);
@@ -31,11 +26,10 @@ console.log(contador)
 
         const productos=JSON.stringify([data.items, data.cantidad, data.precioTotal]);
         localStorage.setItem('productos', productos);
-
+        item.stock=item.stock+=item.quantity;
         item.quantity=0;
         if(data.items.length===1){
             console.log(data.items.quantity)
-            console.log("hola data cantidad 1")
             setData({
                 items: [],
                 cantidad: 0,
@@ -43,28 +37,7 @@ console.log(contador)
             })
             localStorage.clear();
         } 
-
-
-       /*  console.log(`removiendo ${id}`);
-        const find = data.items.find((prod) => prod.id === id);
-        const filter = data.items.filter((prod) => prod.id !== id);
-
-        console.log(data.precioTotal);
-        console.log(find);
-        console.log(find.precio);
-        console.log(find.quantity);
-        console.log(filter);
-
-        setData({ 
-            ...data, 
-            items: filter,
-            cantidad: data.cantidad-cantidad,
-            precioTotal: data.precioTotal - (find.precio*find.quantity)
-        }); */
-
     }   
-
-    console.log(data)
 
     return (
         <>
@@ -103,8 +76,6 @@ console.log(contador)
                     
                 </tr>
                 
-
-               
                 </>
       );
 }

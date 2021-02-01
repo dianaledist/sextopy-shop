@@ -3,8 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import productosDB from "../../../database/db";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import {Store} from '../../../store/index';
-
-/* import productosDB from "../../../database/db.json"; */
+import './ItemDetailContainer.scss';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {getFirestore} from '../../../database/index';
 
@@ -33,12 +32,6 @@ const ItemListContainer = ({producto, key, idproducto}) => {
 
   }, []); */
 
-  console.log(item)
-
-console.log(id)
-
-
-
     useEffect(() => {
       setTimeout(() => {
         const promise = new Promise((resolve, reject) => {
@@ -55,7 +48,11 @@ console.log(id)
 
     return (
         <Fragment>
-        <h1 className="Shrikhand text-center p-5">Detalles del producto </h1>
+        <div className="container-fluid p-3"><p className="d-flex Bellota-text"><Link to = {"/"} className="px-1">Home</Link> {" > "} <Link to={`/category/${item.categoria}`} className="category_title px-1"> <p className="d-block">{item.categoria}</p></Link> {" > "} <span className="px-1">  {item.nombre}</span></p></div>
+        
+
+        <h1 className="Shrikhand text-center pb-3">Detalles del producto </h1>
+                        
         <div className="container">
           <div className="mt-4 row d-flex d-flex justify-content-center align-items-center Bellota-text">
             {
@@ -72,6 +69,7 @@ console.log(id)
                 precio={item.precio}
                 stock={item.stock}
                 cantidad={item.cantidad}
+                categoria={item.categoria}
                 />
               </> :
               <>
@@ -80,27 +78,6 @@ console.log(id)
 
               </>
             }
-
-
-            
-          {/* {
-            productos.length ?
-            <>
-            {productos.map(producto => (
-                <>
-                <p>El id del producto seleccionado es: {producto.id}</p>
-                <ItemDetail
-            
-                key={producto.id}
-                producto={producto} 
-                />
-                </>
-    
-            ))} 
-            </> :
-            <p className="loading pb-5">Cargando información 💜 </p>
-          } */}
-                  
           </div>
         </div>
         </Fragment>
