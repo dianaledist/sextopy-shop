@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import './nav.scss';
 import logo from '../../../assets/images/sextopy_logo.svg';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
 import DrawerLeft from '../DrawerLeft/DrawerLeft';
 import DrawerRight from '../DrawerRight/DrawerRight';
 
