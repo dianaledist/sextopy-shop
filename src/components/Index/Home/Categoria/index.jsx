@@ -5,7 +5,6 @@ import Accesorios from '../../../../assets/images/accesorios.png';
 import Juguetes from '../../../../assets/images/juguetes.png';
 import Novedades from '../../../../assets/images/novedades.png';
 
-
 const categoryItems = [
     {
         texto: 'Ropa cool',

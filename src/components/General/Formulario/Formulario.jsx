@@ -58,7 +58,6 @@ const Formulario = () => {
                   url('../../assets/images/nyan-cat.gif')
                   left top
                   no-repeat`
-
               })
               document.querySelector(".form-group").reset();
         } 
