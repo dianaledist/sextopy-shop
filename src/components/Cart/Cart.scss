@@ -8,6 +8,11 @@
     background-color: #7c50bf;
 }
 
+table tr {
+    vertical-align: center;
+}
+
+
 @media (max-width:600px){
     th {
         width: 100% !important;

@@ -1,15 +1,13 @@
 import React, { Fragment, useState, useEffect, useContext }  from 'react';
 import { useParams, Link } from "react-router-dom";
-/* import productosDB from "../../../database/db"; */
 import ItemDetail from "../ItemDetail/ItemDetail";
 import {Store} from '../../../store/index';
-
-/* import productosDB from "../../../database/db.json"; */
+import './ItemDetailContainer.scss';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {getFirestore} from '../../../database/index';
 
 
-const ItemListContainer = ({producto, key, idProducto}) => {
+const ItemListContainer = ({producto, key, idproducto}) => {
 
     const [item, setItem] =useState([]);
     const [data, setData]= useContext(Store);
@@ -17,48 +15,37 @@ const ItemListContainer = ({producto, key, idProducto}) => {
 
     const db = getFirestore();
 
-    /*  console.log(JSON.stringify(productosDB)); */
+
     useEffect(() => {
-      db.collection('productos').doc(id).get()
+      if(id) {
+        db.collection('productos').doc(id).get()
+
       .then(doc => {
           if(doc.exists) {
               setItem(doc.data());
           }
       })
       .catch(e => console.log(e));
-
+      }
+      
 
   }, []);
 
 
-/*     console.log(data) */
-
-
-
-/*     useEffect(() => {
-      setTimeout(() => {
-        const promise = new Promise((resolve, reject) => {
-          const itemDB = data.items.find(producto=>producto.id==id)
-          resolve(itemDB)
-
-        });
-        promise.then((itemDB) => {
-          setItem(itemDB);
-        });
-      }, [id]);
-    }, 1000); */
-
-
     return (
         <Fragment>
-        <h1 className="Shrikhand text-center p-5">Detalles del producto </h1>
+        <div className="container-fluid p-3"><p className="d-flex Bellota-text"><Link to = {"/"} className="px-1">Home</Link> {" > "} <Link to={`/category/${item.categoria}`} className="category_title px-1"> <p className="d-block">{item.categoria}</p></Link> {" > "} <span className="px-1">  {item.nombre}</span></p></div>
+        
+
+        <h1 className="Shrikhand text-center pb-3">Detalles del producto </h1>
+                        
         <div className="container">
           <div className="mt-4 row d-flex d-flex justify-content-center align-items-center Bellota-text">
             {
               item ?
               <>
                 <ItemDetail
-                key={id}
+                key={item.id}
                 item={item} 
                 id={item.id}                
                 url={item.url}
@@ -68,6 +55,7 @@ const ItemListContainer = ({producto, key, idProducto}) => {
                 precio={item.precio}
                 stock={item.stock}
                 cantidad={item.cantidad}
+                categoria={item.categoria}
                 />
               </> :
               <>
@@ -76,27 +64,6 @@ const ItemListContainer = ({producto, key, idProducto}) => {
 
               </>
             }
-
-
-            
-          {/* {
-            productos.length ?
-            <>
-            {productos.map(producto => (
-                <>
-                <p>El id del producto seleccionado es: {producto.id}</p>
-                <ItemDetail
-            
-                key={producto.id}
-                producto={producto} 
-                />
-                </>
-    
-            ))} 
-            </> :
-            <p className="loading pb-5">Cargando información 💜 </p>
-          } */}
-                  
           </div>
         </div>
         </Fragment>

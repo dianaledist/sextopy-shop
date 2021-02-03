@@ -1,19 +1,14 @@
 import {useEffect, useState} from 'react';
 import {useParams, Link} from 'react-router-dom';
-import Home from '../../Index/Home/Home';
-/* import productosDB from "../../../database/db"; */
-/* import spinner from "../../../assets/images/spinner.gif"; */
 import SectionCards from '../../Index/SectionCards/SectionCards';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {getFirestore} from '../../../database/index';
 import './Category.scss';
 
-
 const Category = () => {
     const [productos, setProductos] =useState([]);
 
     const {category_name} = useParams();
-
 
     const db = getFirestore();
 
@@ -29,42 +24,14 @@ const Category = () => {
                 setProductos(arr);
             })
         }
-    }, [category_name])
-
-  
-/*   const getProductos = new Promise ((resolve,reject)=>{
-    const productos_categoria = productosDB.filter(item=> {
-      return item.categoria===category_name
-    })
-
-    setTimeout(() => {
-      resolve(productos_categoria)
-    }, 500)
-  })
-
-  const getProducstFromDB = async () => {
-    try {
-        const result = await getProductos;
-        setProductos(result);
-    } catch(error) {
-        alert("No podemos mostrar los productos en este momento");
-    }
-}
-
-console.log(productos)
-
-  useEffect(() => {
-    console.log(category_name);
-    getProducstFromDB();
-}, [category_name]) */
-
-
-
-
+    }, [category_name]) 
 
     return (
-        <>
+        <>  
+        <div className="container-fluid p-3"><p className="d-flex Bellota-text"><Link to = {"/"} className="px-1">Home</Link> {" > "} <p className="d-block pl-1"> {category_name}</p></p></div>
+            
             <div className="mt-5 mb-5 text-center Shrikhand">
+            
             <h2 className="category_title">{category_name.split('-').join(' ')}</h2>
             </div>
             <div className="container">
@@ -83,8 +50,7 @@ console.log(productos)
                     descripcion={producto.data.descripcion}  
                     precio={producto.data.precio}  
                     stock={producto.data.stock}  
-                    
-                    /> 
+                /> 
                 ))} 
                 </> :
                 <>

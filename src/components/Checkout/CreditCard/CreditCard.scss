@@ -1,0 +1,35 @@
+.contenedor {
+    background: var(--blanco);
+    border-radius: 1.5rem;
+	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+#PaymentForm {
+	width: auto;
+	display: flex;
+	height: auto;
+	justify-content: space-around;
+	flex-direction: column;
+	background: #ffff;
+	border-radius: 10px;
+}
+
+.input-form {
+	background: #f9f9f9;
+	padding: 10px;
+	width: 100%;
+	border: none;
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: rgb(0, 0, 0);
+	outline: none;
+	font-weight: 300;
+}
+
+.rcss {
+	margin:0;
+}
+
+.rccs__card--unknown > div {
+	background: #75c9a5;
+}

@@ -1,61 +1,41 @@
 import React from 'react';
 import SectionCards from '../../Index/SectionCards/SectionCards';
 import './Home.scss';
-
 import { Fragment, useState, useEffect } from 'react';
-/* import productosDB from "../../../database/db"; */
-/* import productosDB from "../../../database/db.json"; */
 import spinner from "../../../assets/images/spinner.gif";
 import {getFirestore} from '../../../database/index';
+import Categoria from './Categoria';
+import Formulario from '../../General/Formulario/Formulario';
 
 
-const Home = ({carritoCompra, setCarritoCompra}) => {
+const Home = () => {
 
     const [productos, setProductos] =useState([]);
     const [items, setItems]= useState([]);
-    
-    const db = getFirestore();
+  
 
-    /*  console.log(JSON.stringify(productosDB)); */
+  const db = getFirestore();  
+
   const getProductsFromDB=()=> {
-    db.collection('productos').where("destacado", "==", true).get()
+  db.collection('productos').where("destacado", "==", true).get()
 
-    .then(docs=> {
-      let arr=[];
-      docs.forEach(doc=>{        
-        arr.push({id: doc.id, data: doc.data()})
-      }) 
-      setItems(arr);
-    
-     
-    })
-    .catch(e=>console.log(e))
-  }
-
-  useEffect(()=>{
-    getProductsFromDB();
+  .then(docs=> {
+    let arr=[];
+    docs.forEach(doc=>{        
+      arr.push({id: doc.id, data: doc.data()})
+    }) 
+    setItems(arr);
+  
+   
   })
+  .catch(e=>console.log(e))
+}
+
+useEffect(()=>{
+  getProductsFromDB();
+}, []) 
 
 
-
-  /* const getProductos = new Promise ((resolve,reject)=>{
-    const productos_destacados = productosDB.filter(item=> {
-      return item.destacado===true
-
-    })
-    setTimeout(() => {      
-      true?resolve(productos_destacados):reject("Error 500");
-
-    }, 1000)
-  })
-
-   // getProductos
-    // .then(rta=>setProductos(rta))
-    // .catch(error=>console.log(error));
-
-  useEffect(() => {
-    getProductos.then(rta=>setProductos(rta))
-  }, []) */
 
     return ( 
         <Fragment>
@@ -88,9 +68,12 @@ const Home = ({carritoCompra, setCarritoCompra}) => {
             </>
 
           }
-                  
+          <Categoria/> 
+               
           </div>
+          
         </div>
+        <Formulario/>  
         </Fragment>
      );
 }

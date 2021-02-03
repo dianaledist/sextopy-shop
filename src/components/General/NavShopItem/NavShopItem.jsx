@@ -4,7 +4,6 @@ import {Store} from '../../../store';
 
 const NavShopItem = () => {
     const [data, setData] = useContext(Store);
-    console.log(data);
 
     return ( 
         <div className="icons shop_image" key={data.cantidad}>                            

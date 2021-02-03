@@ -1,0 +1,21 @@
+
+.cont{
+    position: relative;
+    min-height: 310px;
+    & .imagen {
+        background-color: #fff;
+        position: absolute;
+    }
+    & .texto {
+        background-color: #b91a3fb6;
+        position: absolute;
+        height: 65px;
+        right: 5%;
+        top: 20%;
+        & :hover {
+            background-color: #b91a3f;
+            height: 105px;
+            text-decoration: none;
+        }
+    }
+}
