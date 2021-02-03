@@ -1,16 +1,7 @@
-#PaymentForm {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 50%;
-	width: 100%;
-	background: #ff512f; /* fallback for old browsers */
-	background: -webkit-linear-gradient(
-		to right,
-		#dd2476,
-		#ff512f
-	); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #dd2476, #ff512f);
+.contenedor {
+    background: var(--blanco);
+    border-radius: 1.5rem;
+	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 #PaymentForm {

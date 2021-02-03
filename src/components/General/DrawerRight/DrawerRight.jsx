@@ -5,7 +5,6 @@ import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import NavShopItem from '../NavShopItem/NavShopItem';
 import {Link} from 'react-router-dom';
-
 import './DrawerRight.scss';
 import {Store} from '../../../store';
 import CartList from './CartList/CartList';

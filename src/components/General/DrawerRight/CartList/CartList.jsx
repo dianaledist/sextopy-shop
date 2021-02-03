@@ -14,7 +14,6 @@ const CartList = ({item,id, cantidad}) => {
         console.log(find);
         console.log(filter);
 
-       
         setData({ 
             ...data, 
             items: filter,
@@ -45,15 +44,14 @@ const CartList = ({item,id, cantidad}) => {
         <div className="cartlist-gral d-flex align-items-center">
             <div className="cartlist">
                 <p className="mb-0 cartlist-cantidad"> {qtyParcial}</p>
-                <img src={item.url} alt={item.nombre} className="img-fluid cartlist-img"/>
-                {/* <img src={`../../../products/${item.url}`} alt={item.nombre} className="img-fluid cartlist-img"/> */}
+                <img src={`../../../products/${item.url}`} alt={item.nombre} className="img-fluid cartlist-img"/>
             </div>
             <div className="cartlist-texto text-left">
                 <p className="mb-0 cartlist-texto-nombre">{item.nombre}</p>
             </div>
         </div>
         <div className="justify-content-end">
-            <span className="font-weight-bold">$ {item.precio}</span><CancelIcon onClick={ () => onRemove(id)}/>
+            <span className="font-weight-bold">$ {item.precio*item.quantity}</span><CancelIcon onClick={ () => onRemove(id)}/>
         </div>
     
     

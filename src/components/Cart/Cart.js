@@ -34,11 +34,11 @@ const CartContainer = () => {
 
     return ( 
     <>
-    <div className="container pt-3 pb-3">
-        <h2 className="Shrikhand text-center ">Tu carrito Sextopy</h2>
+     <div className="container-fluid p-3">
+        <p className="d-flex Bellota-text"><Link to = {"/"} className="px-1">Home</Link> {" > "} <span className="px-1">Resumen de compra</span>
+        </p>
     </div>
     <div className="card-producto container animate__animated animate__zoomIn p-5 mb-5" >
-    <Link to="/" className="links"><ArrowBackIcon /></Link>
         <h2 className="Bellota-text text-center pb-3">Resumen de compra</h2>
         <table className="mx-auto" cellpadding="10" key={data.items.id}>
 

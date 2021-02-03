@@ -3,7 +3,6 @@ import './Footer.scss';
 
 const Footer = (props) => {
 
-
     const { fecha} = props
     return (
         <footer className="footer p-3">

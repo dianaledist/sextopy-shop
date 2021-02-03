@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import './nav.scss';
 import logo from '../../../assets/images/sextopy_logo.svg';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -13,8 +14,8 @@ const Nav = () => {
         <header className="container-fluid Bellota-text">
         <section className="navbar-section d-flex justify-content-between ">
         <div className="navbar-menulogo d-flex align-items-center">
-            <DrawerLeft />
-                <a href="/" className="icons ml-3 p-1">
+            <DrawerLeft/>
+                <a href="/" className="icons ml-3 p-1" >
                     <div className="d-flex">
                     <img src={logo}  width="60%" alt="logo sextopy"/>
                     </div>
@@ -23,7 +24,9 @@ const Nav = () => {
                 <div className="navbar-right d-flex justify-content-end">
                     <div className="d-flex align-items-center">
                         
-                            <ExitToAppIcon fontSize="large" className="icons d-none d-md-block mr-2" />
+                        <Link to={`/codigo`}>
+                        <ExitToAppIcon fontSize="large" className="icons d-none d-md-block mr-2" />
+                        </Link>
                         
                        <DrawerRight/>
                                   

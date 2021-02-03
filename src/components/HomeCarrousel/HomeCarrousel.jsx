@@ -7,7 +7,6 @@ import './HomeCarrousel.scss';
 
 const HomeCarrousel = () => {
     return (
-
     <Carousel className="Bellota-text carrousel">
         <Carousel.Item>
           <img

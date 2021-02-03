@@ -6,13 +6,11 @@ import Swal from 'sweetalert2';
 import {Store} from '../../../store';
 
 
-const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, cantidad, categoria}) => {
+const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock}) => {
 
     const [data, setData]= useContext(Store);
 
     const [contador, setContador]= useState(1);
-    const [redirect, setRedirect] = useState(false);
-    const [confirmMessage, setConfirmMessage] = useState("")
 
     const setAlert = (e)=> {
         Swal.fire({
@@ -93,8 +91,7 @@ const ItemDetail = ({item, id, url, nombre, descripcion, cttas, precio, stock, c
             <div className="row text-center align-items-center">
                 <div className="col-12 col-md-6">
                     <div className="overlay">
-                        <img src={url} alt={nombre} className="img-fluid img-transform"/>
-                        {/* <img src={`../../../products/${url}`} alt={nombre} className="img-fluid img-transform"/> */}
+                        <img src={`../../../products/${url}`} alt={nombre} className="img-fluid img-transform"/>
                     </div>
                 </div>
                 <div className="col-12 col-md-6">

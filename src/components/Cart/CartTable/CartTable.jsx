@@ -44,9 +44,7 @@ const CartTable = ({key, url, nombre, precio, id, cantidad, stock, items, item})
         <tr key={id} className="text-center">
 
                     <th>
-
-                    <img src={item.url} alt={item.nombre} className="img-fluid cartlist-img"/>
-                    {/* <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3" width="50%"/> */}
+                    <img src={`../../../products/${url}`} alt={nombre} className="img-fluid pt-3" width="50%"/>
                     </th>
                     <th>
                     <h4 className="text-center Bellota-text-bold">{nombre} - ${precio}</h4>

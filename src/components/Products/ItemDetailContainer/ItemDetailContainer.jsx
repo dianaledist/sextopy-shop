@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext }  from 'react';
 import { useParams, Link } from "react-router-dom";
-import productosDB from "../../../database/db";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import {Store} from '../../../store/index';
 import './ItemDetailContainer.scss';
@@ -14,7 +13,7 @@ const ItemListContainer = ({producto, key, idproducto}) => {
     const [data, setData]= useContext(Store);
     const { id } = useParams();
 
-    /* const db = getFirestore();
+    const db = getFirestore();
 
 
     useEffect(() => {
@@ -30,20 +29,7 @@ const ItemListContainer = ({producto, key, idproducto}) => {
       }
       
 
-  }, []); */
-
-    useEffect(() => {
-      setTimeout(() => {
-        const promise = new Promise((resolve, reject) => {
-          const itemDB = productosDB.find(producto=>producto.id==id)
-          resolve(itemDB)
-
-        });
-        promise.then((itemDB) => {
-          setItem(itemDB);
-        });
-      }, [id]);
-    }, 1000);
+  }, []);
 
 
     return (

@@ -2,7 +2,6 @@ import './styles/main.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import Formulario from './components/General/Formulario/Formulario';
 import HomeCarrousel from './components/HomeCarrousel/HomeCarrousel';
 import Nav from './components/General/Nav/Nav';
 import Home from './components/Index/Home/Home';
@@ -12,12 +11,11 @@ import Category from './components/General/Category/Category';
 import ItemDetailContainer from './components/Products/ItemDetailContainer/ItemDetailContainer';
 import CartContainer from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
+import Codigo from './components/Codigo/Codigo';
 import {Store} from './store';
 
 
 function App() {
-    const [nombre, guardarNombre]= useState('');
-    const [email, guardarEmail]= useState('');
 
     //State para un carrito de compras
     const [data, setData] =useState({
@@ -62,6 +60,9 @@ function App() {
         <Route path="/cart">
           <CartContainer/>
         </Route>
+        <Route path="/codigo">
+          <Codigo/>
+        </Route>
         <Route path="/detail/:id?">
           <ItemDetailContainer/>
         </Route>
@@ -75,14 +76,10 @@ function App() {
           <Error404 />
         </Route>
         
+        
       </Switch>
 
-      <Formulario 
-      nombre={nombre}
-      guardarNombre={guardarNombre}
-      email={email}
-      guardarEmail={guardarEmail}
-      />
+      
       <Footer
             fecha={fecha}
       />

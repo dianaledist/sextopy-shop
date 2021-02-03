@@ -2,6 +2,7 @@ import React, {useState}  from 'react';
 import './formulario.scss';
 import mouthImage from '../../../assets/images/erotic-mouth.png';
 import Swal from 'sweetalert2';
+import {getFirestore} from '../../../database/index';
 
 const Formulario = () => {
 
@@ -10,7 +11,8 @@ const Formulario = () => {
         email: '',
         mensaje: ''
     })
-
+    const db = getFirestore();
+    
     const enviarForm = e => {
         e.preventDefault();
 
@@ -44,6 +46,7 @@ const Formulario = () => {
                 })
 
         } else {
+            db.collection('contacto').add(formContacto)
             setFormContacto([formContacto]);
             Swal.fire({
                 title: `Gracias ${formContacto.nombre} por escribirnos. Te respondemos en 🖤`,

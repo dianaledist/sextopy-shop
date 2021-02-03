@@ -1,20 +1,20 @@
 import React, { useState, useContext } from "react";
+import {Link} from 'react-router-dom';
 import Cards from "react-credit-cards";
 import './CreditCard.scss';
 import "react-credit-cards/lib/styles.scss";
 import {Store} from '../../../store/index';
 import {getFirestore} from '../../../database/index';
 import Swal from 'sweetalert2';
-import {uuid} from 'uuidv4';
-
+import firebase from 'firebase/app';
 
 const CreditCard = () => {
 	const db = getFirestore();
 
 	const [data, setData] = useContext(Store);
 
-	const [confirmMessage, setConfirmMessage] = useState("")
-
+	const [venta, ventaCerrada] = useState(false);
+	const [idCompra, setIdCompra] = useState('');
 	const [formData, setformData] = useState({
 		email: "",
 		name: "", 
@@ -23,7 +23,7 @@ const CreditCard = () => {
 		expiry: "",
 		cvc: "",
 		data: data,
-		/* date: firebase.firestore.Timestamp.fromDate(new Date()), */
+		date: firebase.firestore.Timestamp.fromDate(new Date()),
 	  });
 
 	  const { email, name, tel, number, expiry, cvc} = formData;
@@ -37,6 +37,8 @@ const CreditCard = () => {
 		placeholders: {name: "TU NOMBRE AQUÍ"}
 	});
 
+
+
 	const handleInputChange = (e) => {
 		setDataCard({
 			...dataCard,
@@ -48,6 +50,16 @@ const CreditCard = () => {
 		})
 		
 	};
+
+	const borrarStorage = ()=> {
+		document.querySelector(".checkout-form").reset();
+		setData({
+			items: [],
+			cantidad: 0,
+			precioTotal: 0,
+		})
+	}
+
 
 	const setAlert = ()=> {
 		let timerInterval
@@ -86,40 +98,22 @@ const CreditCard = () => {
 		
 		
 			if(number==number.match(/^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/) || number==number.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)) {
-				formData.id=uuid();
 			setformData([formData]);
-			Swal.fire({
-				title: `<h5>Gracias ${formData.name}<br> Número de seguimiento: ${formData.id}<br>Vuelve pronto 🥰</h5>`,
-				showClass: {
-				  popup: 'animate__animated animate__fadeInDown'
-				},
-				hideClass: {
-				  popup: 'animate__animated animate__fadeOutUp'
-				}
-			  })
-			  .then(function() {
-				window.location = "/";
-			});
 
-			  setData({
-				items: [],
-				cantidad: 0,
-				precioTotal: 0
-			})
-			localStorage.clear();
-
-
-			  /* db.collection('ventas').add(formData)
-				.then(({id}) => {
-					setIdCompra(id);
-					setData({
-						items: [],
-						cantidad: 0,
-						precioTotal: 0,
-					})
+			db.collection('ventas').add(formData)
+			.then(({id}) => {
+				ventaCerrada(true);
+				setIdCompra(id);
+				setData({
+					items: [],
+					cantidad: 0,
+					precioTotal: 0
 				})
-				.catch(e => console.log(e)); */
-				document.querySelector(".checkout-form").reset();
+				borrarStorage();
+				
+			})
+			.catch(e => console.log(e));
+			localStorage.clear();
 			} else {
 				setAlert();
 			}
@@ -128,6 +122,8 @@ const CreditCard = () => {
 
 	return (
 		<div id="PaymentForm" className="container-fluid">
+			{
+                !venta ?
 			<div className="row">
 				<form action="" className="checkout-form col-12 col-md-6" onSubmit={handleSubmit}>								
 					<input
@@ -199,7 +195,19 @@ const CreditCard = () => {
 						placeholders={dataCard.placeholders}
 					/>
 				</div>
+			</div> 
+			: 
+			<div className="container contenedor p-5 mb-5 animate__animated animate__zoomIn text-center" >
+				<h3>Gracias por formar parte de la comunidad Sextopy 🖤</h3><h3 className="p-3"> Tu código de seguimiento es: <strong>{idCompra}</strong></h3>
+
+				<h4>Te esperamos pronto 💄 </h4>
+				<Link to={`/`} className="links">
+                    <button className="btn color-primario text-white btn-lg text-uppercase mt-3">Home</button>
+				</Link>
+
 			</div>
+			
+			}
 		</div>
 	);
 };
