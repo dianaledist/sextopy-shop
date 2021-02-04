@@ -58,8 +58,13 @@ export default function TemporaryDrawer() {
         texto: 'Novedades',
         ruta: '/category/novedades',
     },
+    {
+        texto: 'Sigue tu pedido 🎁',
+        ruta: '/codigo',
+    },
 
   ]
+
   
 
   const list = (anchor) => (
