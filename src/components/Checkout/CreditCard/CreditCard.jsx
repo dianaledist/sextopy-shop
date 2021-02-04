@@ -64,7 +64,7 @@ const CreditCard = () => {
 	const setAlert = ()=> {
 		let timerInterval
 		Swal.fire({
-		  title: 'Revisa tus datos 💔 ',
+		  title: 'Faltan datos o no son correctos 💔 ',
 		  html: 'Me cierro en <b></b> milisegundos.',
 		  timer: 1500,
 		  timerProgressBar: true,
